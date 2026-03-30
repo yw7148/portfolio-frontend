@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Young-won Kim | BACKEND_ENG_OS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-variant": "#353534",
+              "tertiary-container": "#31d6c1",
+              "surface-container-highest": "#353534",
+              "tertiary-fixed": "#62fae3",
+              "on-tertiary-container": "#00584f",
+              "on-primary-container": "#00566a",
+              "error": "#ffb4ab",
+              "surface-container-lowest": "#0e0e0e",
+              "surface-container-high": "#2a2a2a",
+              "surface": "#131313",
+              "on-secondary": "#233143",
+              "error-container": "#93000a",
+              "primary-fixed": "#b7eaff",
+              "on-tertiary-fixed-variant": "#005047",
+              "surface-container-low": "#1c1b1b",
+              "inverse-surface": "#e5e2e1",
+              "surface-container": "#201f1f",
+              "primary": "#a4e6ff",
+              "inverse-primary": "#00677f",
+              "surface-bright": "#393939",
+              "secondary": "#b9c8de",
+              "on-tertiary-fixed": "#00201c",
+              "on-secondary-container": "#a7b6cc",
+              "secondary-container": "#39485a",
+              "on-error": "#690005",
+              "surface-tint": "#4cd6ff",
+              "background": "#131313",
+              "on-secondary-fixed-variant": "#39485a",
+              "on-secondary-fixed": "#0d1c2d",
+              "surface-dim": "#131313",
+              "secondary-fixed-dim": "#b9c8de",
+              "on-error-container": "#ffdad6",
+              "primary-fixed-dim": "#4cd6ff",
+              "on-primary-fixed-variant": "#004e60",
+              "tertiary": "#5af3dd",
+              "on-background": "#e5e2e1",
+              "on-primary-fixed": "#001f28",
+              "on-surface-variant": "#bbc9cf",
+              "on-tertiary": "#003731",
+              "primary-container": "#00d1ff",
+              "outline": "#859399",
+              "on-surface": "#e5e2e1",
+              "secondary-fixed": "#d4e4fa",
+              "inverse-on-surface": "#313030",
+              "on-primary": "#003543",
+              "outline-variant": "#3c494e",
+              "tertiary-fixed-dim": "#3cddc7"
+            },
+            fontFamily: {
+              "headline": ["Space Grotesk"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #131313;
+        color: #e5e2e1;
+        font-family: 'Inter', sans-serif;
+      }
+      .font-space { font-family: 'Space Grotesk', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#131313]/80 backdrop-blur-md border-b border-[#00D1FF]/15 h-16">
+<div class="flex justify-between items-center px-8 h-full w-full max-w-7xl mx-auto">
+<div class="text-xl font-bold text-[#00D1FF] dark:text-[#00D1FF] font-headline tracking-tighter uppercase">
+                BACKEND_ENG_OS
+            </div>
+<div class="hidden md:flex gap-8 items-center font-headline tracking-tighter uppercase text-sm">
+<a class="text-[#00D1FF] font-black border-b-2 border-[#00D1FF] pb-1 transition-all" href="#">Home</a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#">CV</a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#">GitHub</a>
+<a class="text-gray-400 hover:text-white transition-colors" href="#">Email</a>
+</div>
+<div class="flex items-center">
+<button class="p-2 text-[#00D1FF] hover:bg-[#2a2a2a] transition-all duration-200 rounded">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex flex-col justify-center px-8 max-w-7xl mx-auto">
+<div class="absolute top-20 right-8 opacity-10 pointer-events-none select-none hidden lg:block">
+<span class="font-headline text-[15rem] leading-none font-black text-primary">KIM</span>
+</div>
+<div class="z-10 max-w-4xl">
+<div class="flex items-center gap-2 mb-6 font-mono text-tertiary text-sm tracking-widest uppercase">
+<span class="w-8 h-px bg-tertiary"></span>
+<span>Systems Architect // Backend Specialist</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-headline font-bold leading-[0.9] mb-8 tracking-tighter text-on-surface">
+                    Young-won Kim: Engineering <span class="text-primary-container">Clarity</span>, Speed, and Reliability.
+                </h1>
+<p class="text-xl md:text-2xl text-on-surface-variant font-light mb-10 max-w-2xl leading-relaxed">
+                    A 4th-year Backend/DevOps Engineer specializing in legacy rescue, performance tuning, and delivery ownership.
+                </p>
+<div class="bg-surface-container-low p-6 border-l-4 border-primary max-w-xl">
+<p class="text-on-surface font-medium italic">
+                        "Built for teams that need clarity, speed, and delivery discipline."
+                    </p>
+</div>
+</div>
+</section>
+<!-- Performance Stats -->
+<section class="bg-surface-container-lowest py-24 px-8 border-y border-outline-variant/15">
+<div class="max-w-7xl mx-auto">
+<div class="flex items-center gap-4 mb-12">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<h2 class="font-headline text-2xl font-bold uppercase tracking-tight">System_Performance_Metrics</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+<div class="bg-surface-container-high p-10 flex flex-col justify-between transition-all hover:bg-surface-container-highest group">
+<span class="font-headline text-6xl font-black text-tertiary mb-4 group-hover:scale-110 origin-left transition-transform">30x</span>
+<div>
+<p class="font-headline text-xl font-bold text-on-surface mb-2">Search performance</p>
+<p class="text-sm text-on-surface-variant font-mono uppercase tracking-wider">Latency reduction / Index optimization</p>
+</div>
+</div>
+<div class="bg-surface-container-high p-10 flex flex-col justify-between transition-all hover:bg-surface-container-highest group border-y md:border-y-0 md:border-x border-outline-variant/20">
+<span class="font-headline text-6xl font-black text-tertiary mb-4 group-hover:scale-110 origin-left transition-transform">12x</span>
+<div>
+<p class="font-headline text-xl font-bold text-on-surface mb-2">Integrated query</p>
+<p class="text-sm text-on-surface-variant font-mono uppercase tracking-wider">Join optimization / Cache layer impl</p>
+</div>
+</div>
+<div class="bg-surface-container-high p-10 flex flex-col justify-between transition-all hover:bg-surface-container-highest group">
+<span class="font-headline text-6xl font-black text-tertiary mb-4 group-hover:scale-110 origin-left transition-transform">20fps+</span>
+<div>
+<p class="font-headline text-xl font-bold text-on-surface mb-2">3D Rendering recovered</p>
+<p class="text-sm text-on-surface-variant font-mono uppercase tracking-wider">GPU Threading / Memory management</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Strengths Section -->
+<section class="py-24 px-8 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+<div class="space-y-6">
+<div class="w-16 h-16 bg-primary-container/10 flex items-center justify-center rounded-lg text-primary-container">
+<span class="material-symbols-outlined text-4xl" data-icon="architecture">architecture</span>
+</div>
+<h3 class="font-headline text-2xl font-bold">Clarify The System</h3>
+<p class="text-on-surface-variant leading-relaxed">Simplifying complex requirements into production-ready structures. Designing for scale before the first line of code is written.</p>
+</div>
+<div class="space-y-6">
+<div class="w-16 h-16 bg-primary-container/10 flex items-center justify-center rounded-lg text-primary-container">
+<span class="material-symbols-outlined text-4xl" data-icon="bolt">bolt</span>
+</div>
+<h3 class="font-headline text-2xl font-bold">Fix The Bottleneck</h3>
+<p class="text-on-surface-variant leading-relaxed">Turning slow, unstable systems into measurable performance gains. Identifying points of failure through deep profiling and observability.</p>
+</div>
+<div class="space-y-6">
+<div class="w-16 h-16 bg-primary-container/10 flex items-center justify-center rounded-lg text-primary-container">
+<span class="material-symbols-outlined text-4xl" data-icon="deployed_code">deployed_code</span>
+</div>
+<h3 class="font-headline text-2xl font-bold">Ship To Production</h3>
+<p class="text-on-surface-variant leading-relaxed">Beyond implementation—connecting to deployment, documentation, and operations. Ensuring code is not just written, but operational.</p>
+</div>
+</div>
+</section>
+<!-- Featured Projects -->
+<section class="bg-surface-container-low py-24 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<p class="text-primary font-mono text-sm uppercase tracking-widest mb-2">[02] SELECTED_WORK</p>
+<h2 class="font-headline text-4xl font-bold">Engineering Portfolio</h2>
+</div>
+<div class="hidden md:block">
+<span class="text-on-surface-variant font-mono text-xs uppercase tracking-tighter">Scroll to explore // View detailed narratives</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="bg-surface rounded-xl overflow-hidden group border border-outline-variant/10 hover:border-primary/30 transition-all shadow-xl shadow-black/20">
+<div class="aspect-video relative overflow-hidden bg-surface-container-high">
+<img alt="MUMUK Recommendation System UI" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Dashboard showing complex data recommendation charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgpjWp7CwwMUYpT4fzT0Xt7vfKKgHMVxPe5KEsZ_BzohHh4ORj_FYvSrsmgUckGgGkWd_VqzcH0oV0Yf2-e7IyAwmXvcsr6vBsYwbaqW6e7WB3t7dyWsUy8tlVWBPjimiWUkvBLO3sTkaC82IziZv7MsCz2ELQkz3wiyCqLv6BgjsfdJdAP_R4pU19kAm-6jWUWNQ2XOTOlcc6jKrEUwP0egT_u8OIvL1zXu08iXxpSJtyVoewWqKRQEvxORas-BbfI5vMq5zDoxKv"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-wider">Python</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-wider">FastAPI</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-wider">PostgreSQL</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3">MUMUK</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Recommendation product focused on user intent parsing and high-availability data delivery.</p>
+<button class="w-full py-3 bg-surface-container-high hover:bg-primary-container text-on-surface hover:text-on-primary-container font-headline font-bold uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2 group">
+                                View Detail <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="bg-surface rounded-xl overflow-hidden group border border-outline-variant/10 hover:border-primary/30 transition-all shadow-xl shadow-black/20">
+<div class="aspect-video relative overflow-hidden bg-surface-container-high">
+<img alt="SolidIT Graphics Platform" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Technical wireframe of a 3D interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkWt8vAl1IarUy8mwBcs7iJrA_Jg84b0xRfhZuqPfq6t0zaNxAizmmbFDKkiQ7Frn_Gi0_je8Rv9cn-TBAe6jXZFSDQr1bWufbcPGB_UPpJN-nkIlb3Ng5SC4HSRv-SWVfgkczwQL4TfFQthucc3GsAmIfm1UPlmdCSFWsok08S-wUUO8JPN_aFiCEUbYLIvI1cKIuL7Zi38GURINng8VxNugFA7grvbEvAz3ydm26lghfxR0fzl_aiiTR5rPizw1VMeiAU86C_QZx"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-wider">C++</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-wider">WebGL</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-wider">Rust</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3">SolidIT 3D/Web</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Performance-first graphics platform bridge between browser-based frontends and native 3D engines.</p>
+<button class="w-full py-3 bg-surface-container-high hover:bg-primary-container text-on-surface hover:text-on-primary-container font-headline font-bold uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2 group">
+                                View Detail <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="bg-surface rounded-xl overflow-hidden group border border-outline-variant/10 hover:border-primary/30 transition-all shadow-xl shadow-black/20">
+<div class="aspect-video relative overflow-hidden bg-surface-container-high">
+<img alt="Danjine Smart Apartment UI" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 scale-105 group-hover:scale-100" data-alt="Modern smart home mobile application interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx53kVJpY7Noh-tJcgXPtbCf4uxMF44GwCZxNQI-TwaD45yLJOA4BKHn-K9WOTe68JkBFBr11gHlAGJbnT4Uea-9nBCKUoWmMI6d8SHRqPm3UB7tQ9nXFYHVJQV6i73pc944k3s0iKCY9lR64bG2eZOcua_lQfSNPufyGiAcNnfIY-t-RGX6Fimn2DkG6STlz_LlvCgFDIv2jTXb8PF0Oszhk1nLoHovyFPAS8hl6VpODV-Ytyi9t7K0lBm5LXFuS9QQs8g9SHIfEU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<div class="p-8">
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-wider">Node.js</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-wider">IoT</span>
+<span class="bg-surface-container-highest px-2 py-1 rounded text-[10px] font-mono font-bold text-on-surface-variant uppercase tracking-wider">MQTT</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-3">Danjine (단지네)</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Capstone Smart Apartment Service integrating IoT sensors with high-concurrency event processing.</p>
+<button class="w-full py-3 bg-surface-container-high hover:bg-primary-container text-on-surface hover:text-on-primary-container font-headline font-bold uppercase text-xs tracking-widest transition-all flex items-center justify-center gap-2 group">
+                                View Detail <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CV Bridge -->
+<section class="py-32 px-8">
+<div class="max-w-4xl mx-auto bg-surface-container-high p-12 relative overflow-hidden">
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1">
+<h2 class="font-headline text-4xl font-bold mb-6">Need a deeper dive?</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-0">
+                            View my full career history and project narratives on my CV. I document the "how" as much as the "what."
+                        </p>
+</div>
+<div class="flex-shrink-0">
+<a class="inline-flex items-center gap-4 px-8 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all group" href="#">
+                            Full Career CV
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="description">description</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#0e0e0e] w-full py-12 px-8 border-t border-[#00D1FF]/10">
+<div class="flex flex-col md:flex-row justify-between items-center gap-4 w-full max-w-7xl mx-auto">
+<div class="font-mono text-[10px] uppercase tracking-widest text-[#00D1FF]">
+                © 2024 DEVOPS_ARCHITECT. ALL_SYSTEMS_OPERATIONAL.
+            </div>
+<div class="flex gap-8 items-center font-mono text-[10px] uppercase tracking-widest">
+<a class="text-gray-600 hover:text-[#00D1FF] transition-colors" href="#">Documentation</a>
+<a class="text-gray-600 hover:text-[#00D1FF] transition-colors" href="#">Source</a>
+<a class="text-gray-600 hover:text-[#00D1FF] transition-colors" href="#">Status</a>
+</div>
+</div>
+</footer>
+</body></html>

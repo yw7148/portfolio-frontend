@@ -1,0 +1,90 @@
+@font-face {
+  font-family: 'Wanted Sans Variable';
+  src: url('/assets/fonts/WantedSansVariable.woff2') format('woff2-variations');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400 1000;
+}
+
+:root {
+  --surface: #f5f6f8;
+  --surface-lowest: #edf0f3;
+  --surface-low: #f8f9fb;
+  --surface-container: rgba(255, 255, 255, 0.86);
+  --surface-high: rgba(255, 255, 255, 0.94);
+  --surface-highest: #ffffff;
+  --primary: #30353d;
+  --primary-container: #242930;
+  --tertiary: #727985;
+  --ink-main: #171b21;
+  --ink-muted: #5e6772;
+  --ink-inverse: #ffffff;
+  --outline: #d8dee5;
+  --shadow-soft: 0 20px 50px rgba(23, 27, 33, 0.08);
+  --shadow-float: 0 28px 80px rgba(23, 27, 33, 0.12);
+  --font-body: 'Wanted Sans Variable', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-display: 'Wanted Sans Variable', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  --font-mono: 'SFMono-Regular', 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+  background: var(--surface);
+  color: var(--ink-main);
+  font-family: var(--font-body);
+  font-synthesis: none;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.98), transparent 22%),
+    radial-gradient(circle at top right, rgba(226, 231, 237, 0.75), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(211, 217, 224, 0.55), transparent 30%),
+    linear-gradient(180deg, #fcfcfd 0%, #eef2f6 100%);
+  color: var(--ink-main);
+  margin: 0;
+  min-width: 320px;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: rgba(48, 53, 61, 0.16);
+  color: var(--ink-main);
+}
+
+#root {
+  min-height: 100vh;
+}

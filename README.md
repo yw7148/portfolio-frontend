@@ -1,6 +1,6 @@
 # Portfolio Frontend (React)
 
-4년차 개발자 김영원의 포트폴리오를 React + Vite로 재구성한 포트폴리오 프론트엔드입니다.
+5년차 Backend Engineer 김영원의 포트폴리오를 React + Vite로 재구성한 포트폴리오 프론트엔드입니다.
 기존 백엔드 저장소([yw7148/Portfolio](https://github.com/yw7148/Portfolio)) API를 그대로 사용합니다.
 
 `docs/vibe-coding/`를 포트폴리오 바이브 코딩의 단일 문서 허브로 사용하면 됩니다.

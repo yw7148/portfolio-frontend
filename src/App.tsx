@@ -70,8 +70,7 @@ type HomeProjectItem = {
   title: string
   summary: string
   stack: string[]
-  action: string
-  href: string
+  links: ContactItem[]
   image: string
   alt: string
 }
@@ -187,12 +186,13 @@ const GITHUB_URL = 'https://github.com/yw7148'
 const SOURCE_URL = 'https://github.com/yw7148/portfolio-frontend'
 const README_URL = 'https://github.com/yw7148/portfolio-frontend/blob/main/README.md'
 const PORTFOLIO_URL = 'https://youngwon.me'
-const EMAIL_URL = 'mailto:yw7148@naver.com'
+const EMAIL_URL = 'mailto:youngwon@youngwon.me'
+const CURRENT_YEAR = new Date().getFullYear()
 
 // Placeholder until the backend delivers the home payload.
 const mockHomeData: Record<Locale, HomePageData> = {
   en: {
-    brand: 'TERMINAL_ARCHITECT',
+    brand: 'Youngwon',
     nav: {
       home: 'Home',
       cv: 'CV',
@@ -205,9 +205,9 @@ const mockHomeData: Record<Locale, HomePageData> = {
       titleAccent: 'functional products.',
       titleSuffix: '',
       summary:
-        '4th-year full-stack architect specializing in high-availability backend systems and seamless 0-to-1 product development. I build the infrastructure that scales with your ambition.',
-      primaryAction: 'Initialize Project',
-      secondaryAction: 'View Manifest',
+        '5th-year full-stack architect specializing in high-availability backend systems and seamless 0-to-1 product development. I build the infrastructure that scales with your ambition.',
+      primaryAction: 'Contact',
+      secondaryAction: 'View CV & Projects',
       schemaLabel: 'System_Schema_v4.0.1',
     },
     strengths: {
@@ -215,80 +215,86 @@ const mockHomeData: Record<Locale, HomePageData> = {
       matrixLabel: 'Capabilities_Matrix',
       items: [
         {
-          title: '0→1 Development',
+          title: '0→1 Product Development',
           summary:
-            'Rapid architectural design and execution of minimum viable products from whiteboard sketches to production-ready deployments.',
+            'Lead uncertain ideas all the way to working products, from early architecture and implementation to launch-ready delivery.',
         },
         {
-          title: 'Scalable Architecture',
+          title: 'Concurrency & Reliability',
           summary:
-            'Distributed systems for high availability using microservices, message queues, and robust database modeling for enterprise loads.',
+            'Design concurrency control, caching, and monitoring architectures that keep services stable even under heavy traffic.',
         },
         {
-          title: 'Full-Stack Resolver',
+          title: 'Learn, Challenge, Deliver',
           summary:
-            'Bridging complex backend logic with performant frontend experiences and removing the hardest bottlenecks across the stack.',
+            'When a project needs a capability I do not have yet, I learn fast, take responsibility, and keep the product moving forward.',
         },
       ],
     },
     projects: {
       title: 'Project Archive',
-      summary: 'Selected high-impact engineering samples.',
+      summary: 'Two representative builds spanning application and infrastructure ownership.',
       items: [
         {
           status: 'Active',
-          category: '01 / Infrastructure',
-          title: 'Project Obsidian',
+          category: '01 / Personal Platform',
+          title: 'Portfolio Server',
           summary:
-            'A high-performance telemetry engine capable of processing 100k+ events per second with sub-millisecond latency for real-time monitoring of distributed mesh networks.',
-          stack: ['Kubernetes', 'Go', 'gRPC'],
-          action: 'View Technical Report',
-          href: SOURCE_URL,
-          image: '/assets/img/portfolio-home-obsidian.png',
-          alt: 'Project Obsidian infrastructure visual',
+            'A personal platform managed as one delivery surface: Terraform-based infrastructure, Kubernetes server operations, a backend in progress, and this frontend client.',
+          stack: ['Terraform', 'Kubernetes', 'Backend(WIP)', 'Frontend'],
+          links: [
+            { label: 'Terraform', href: 'https://github.com/yw7148/terraform' },
+            { label: 'server (k8s)', href: 'https://github.com/yw7148/server' },
+            { label: 'backend (WIP)', href: 'https://github.com/yw7148/portfolio' },
+            { label: 'frontend', href: SOURCE_URL },
+          ],
+          image: '/assets/img/youngwon.png',
+          alt: 'Portfolio server preview',
         },
         {
-          status: 'V2.0',
-          category: '02 / Full-Stack',
-          title: 'Aether Hub',
+          status: 'Complete',
+          category: '02 / Smart Apartment Service',
+          title: 'danjinae',
           summary:
-            'End-to-end encrypted collaboration platform for remote engineering teams with real-time state synchronization using CRDTs and custom WebSocket protocols.',
-          stack: ['React', 'Node.js', 'PostgreSQL'],
-          action: 'Documentation',
-          href: README_URL,
-          image: '/assets/img/portfolio-home-aether.png',
-          alt: 'Aether Hub security interface visual',
+            'A capstone smart apartment project connecting backend APIs and an application layer into one resident-facing product experience.',
+          stack: ['Backend', 'Application', 'IoT Service'],
+          links: [
+            { label: 'backend', href: 'https://github.com/Danjinae/Backend' },
+            { label: 'APP', href: 'https://github.com/Danjinae/Application' },
+          ],
+          image: '/assets/img/danjinae.jpg',
+          alt: 'Danjinae smart apartment preview',
         },
       ],
     },
     ecosystem: {
       title: 'Technical Ecosystem',
       summary:
-        'A curated selection of technologies chosen for performance, reliability, and developer experience.',
-      signals: ['Enterprise Ready', 'Security Audited'],
-      stack: ['Rust', 'Docker', 'Postgres', 'TypeScript', 'GraphQL', 'AWS', 'Redis', 'Next.js'],
+        'The stack I use most often when taking products from backend architecture to frontend delivery and infrastructure operations.',
+      signals: ['0→1 Delivery', 'Backend Architecture'],
+      stack: ['Kotlin', 'Java', 'Spring Boot', 'Python', 'FastAPI', 'TypeScript', 'React', 'Redis', 'RabbitMQ', 'Kafka', 'Docker', 'Kubernetes', 'Terraform', 'AWS', 'NCP', 'OCI'],
     },
     cta: {
-      title: 'Ready to architect the next evolution?',
+      title: 'Interested in working together?',
       summary:
-        'Currently accepting inquiries for high-complexity 0-to-1 builds and systems engineering consults.',
-      action: 'Open Connection',
+        'If you are planning a new product or improving an existing system, I would be happy to talk it through with you.',
+      action: 'Start a conversation',
     },
     footer: {
-      statusText: '© 2024 TERMINAL ARCHITECT. ALL SYSTEMS OPERATIONAL.',
-      networkLabel: 'Network Online',
+      statusText: `© ${CURRENT_YEAR} Young-won Kim. Backend & DevOps Engineer.`,
+      networkLabel: 'youngwon.me',
       links: [
         { label: 'GitHub', href: GITHUB_URL },
+        { label: 'Email', href: EMAIL_URL },
         { label: 'Source', href: SOURCE_URL },
-        { label: 'Blog', href: PORTFOLIO_URL },
       ],
     },
   },
   ko: {
-    brand: 'TERMINAL_ARCHITECT',
+    brand: 'YOUNGWON',
     nav: {
-      home: '홈',
-      cv: '경력기술서',
+      home: 'Home',
+      cv: 'CV',
       projects: '프로젝트',
       contact: '문의',
     },
@@ -298,9 +304,9 @@ const mockHomeData: Record<Locale, HomePageData> = {
       titleAccent: '작동하는 제품',
       titleSuffix: '으로 전환합니다.',
       summary:
-        '고가용성 백엔드 시스템과 0-to-1 제품 개발에 강한 4년차 풀스택 아키텍트입니다. 아이디어가 서비스로 자라나는 데 필요한 인프라를 설계하고 구현합니다.',
-      primaryAction: '프로젝트 논의 시작',
-      secondaryAction: '이력서 보기',
+        '고가용성 백엔드 시스템과 0-to-1 제품 개발에 강한 5년차 백엔드 엔지니어입니다. 아이디어가 서비스로 자라나는 데 필요한 인프라를 설계하고 구현합니다.',
+      primaryAction: 'Contact',
+      secondaryAction: '이력서',
       schemaLabel: 'System_Schema_v4.0.1',
     },
     strengths: {
@@ -308,72 +314,78 @@ const mockHomeData: Record<Locale, HomePageData> = {
       matrixLabel: 'Capabilities_Matrix',
       items: [
         {
-          title: '0→1 개발',
+          title: '0→1 제품 개발 주도',
           summary:
-            '화이트보드 스케치 단계의 아이디어를 운영 가능한 MVP까지 빠르게 설계하고 실행합니다.',
+            '불확실한 아이디어를 실제 동작하는 제품으로 만들기 위해 설계, 구현, 출시까지 전 과정을 주도합니다.',
         },
         {
-          title: '확장 가능한 아키텍처',
+          title: '동시성·캐시·모니터링 설계',
           summary:
-            '마이크로서비스, 메시지 큐, 견고한 데이터 모델링을 활용해 높은 가용성과 확장성을 설계합니다.',
+            '대규모 트래픽에도 안정적으로 동작하도록 동시성 제어, 캐싱, 모니터링 아키텍처를 설계하고 구현합니다.',
         },
         {
-          title: '풀스택 문제 해결',
+          title: '학습과 도전을 주저하지 않음',
           summary:
-            '복잡한 백엔드 로직과 빠른 프론트엔드 경험 사이를 연결하며 스택 전반의 병목을 제거합니다.',
+            '부족하거나 새롭게 필요한 역량이 있다면 빠르게 학습하고 도전하며, 필요한 만큼 직접 책임지고 해결합니다.',
         },
       ],
     },
     projects: {
       title: 'Project Archive',
-      summary: '영향력이 큰 엔지니어링 샘플만 골라 보여줍니다.',
+      summary: '애플리케이션과 인프라를 함께 보여주는 대표 프로젝트 2개입니다.',
       items: [
         {
           status: 'Active',
-          category: '01 / Infrastructure',
-          title: 'Project Obsidian',
+          category: '01 / 개인 플랫폼',
+          title: 'Portfolio Server',
           summary:
-            '분산 메시 네트워크의 실시간 관측을 위해 초당 10만 건 이상 이벤트를 처리하는 고성능 텔레메트리 엔진입니다.',
-          stack: ['Kubernetes', 'Go', 'gRPC'],
-          action: '기술 문서 보기',
-          href: SOURCE_URL,
-          image: '/assets/img/portfolio-home-obsidian.png',
-          alt: 'Project Obsidian 인프라 시각화',
+            'Terraform 기반 인프라, Kubernetes 서버 운영, 개발 중인 백엔드, 현재 포트폴리오 프론트엔드까지 하나의 흐름으로 관리하는 개인 플랫폼입니다.',
+          stack: ['Terraform', 'Kubernetes', 'Backend (WIP)', 'Frontend'],
+          links: [
+            { label: 'Terraform', href: 'https://github.com/yw7148/terraform' },
+            { label: 'server (k8s)', href: 'https://github.com/yw7148/server' },
+            { label: 'backend (WIP)', href: 'https://github.com/yw7148/portfolio' },
+            { label: 'frontend', href: SOURCE_URL },
+          ],
+          image: '/assets/img/youngwon.png',
+          alt: 'Portfolio server preview',
         },
         {
-          status: 'V2.0',
-          category: '02 / Full-Stack',
-          title: 'Aether Hub',
+          status: 'Complete',
+          category: '02 / 스마트 아파트 서비스',
+          title: 'danjinae',
           summary:
-            '원격 엔지니어링 팀을 위한 종단간 암호화 협업 플랫폼으로, CRDT와 커스텀 WebSocket 프로토콜 기반 실시간 상태 동기화를 제공합니다.',
-          stack: ['React', 'Node.js', 'PostgreSQL'],
-          action: '문서 보기',
-          href: README_URL,
-          image: '/assets/img/portfolio-home-aether.png',
-          alt: 'Aether Hub 보안 인터페이스 시각화',
+            '백엔드와 애플리케이션 레이어를 함께 구축해 사용자 경험으로 연결한 캡스톤 스마트 아파트 프로젝트입니다.',
+          stack: ['Backend', 'Application', 'IoT Service'],
+          links: [
+            { label: 'backend', href: 'https://github.com/Danjinae/Backend' },
+            { label: 'APP', href: 'https://github.com/Danjinae/Application' },
+          ],
+          image: '/assets/img/danjinae.jpg',
+          alt: 'Danjinae smart apartment preview',
         },
       ],
     },
     ecosystem: {
       title: 'Technical Ecosystem',
       summary:
-        '성능, 안정성, 개발 경험을 기준으로 선별한 기술 스택입니다.',
-      signals: ['엔터프라이즈 대응', '보안 검토 완료'],
-      stack: ['Rust', 'Docker', 'Postgres', 'TypeScript', 'GraphQL', 'AWS', 'Redis', 'Next.js'],
+        '백엔드 설계부터 프론트엔드 구현, 배포와 운영까지 실제로 자주 사용하는 기술 스택입니다.',
+      signals: ['0→1 제품화', '백엔드 설계'],
+      stack: ['Kotlin', 'Java', 'Spring Boot', 'Python', 'FastAPI', 'TypeScript', 'React', 'Redis', 'RabbitMQ', 'Kafka', 'Docker', 'Kubernetes', 'Terraform', 'AWS', 'NCP', 'OCI'],
     },
     cta: {
-      title: '다음 진화를 설계할 준비가 되었나요?',
+      title: '함께 이야기 나눠볼까요?',
       summary:
-        '복잡도가 높은 0-to-1 구축과 시스템 엔지니어링 컨설팅 문의를 받고 있습니다.',
-      action: '연결 열기',
+        '새로운 제품을 준비 중이거나 기존 시스템을 개선하려는 계획이 있다면, 편하게 연락 주세요.',
+      action: 'Contact',
     },
     footer: {
-      statusText: '© 2024 TERMINAL ARCHITECT. ALL SYSTEMS OPERATIONAL.',
-      networkLabel: 'Network Online',
+      statusText: `© ${CURRENT_YEAR} 김영원. 백엔드 엔지니어.`,
+      networkLabel: 'youngwon.me',
       links: [
         { label: 'GitHub', href: GITHUB_URL },
+        { label: '이메일', href: EMAIL_URL },
         { label: '소스', href: SOURCE_URL },
-        { label: '블로그', href: PORTFOLIO_URL },
       ],
     },
   },
@@ -395,7 +407,7 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       titleAccent: 'Clarity',
       titleSuffix: ', Speed, and Reliability.',
       summary:
-        'A 4th-year Backend/DevOps Engineer specializing in legacy rescue, performance tuning, and delivery ownership.',
+        'A 5th-year Backend/DevOps Engineer specializing in legacy rescue, performance tuning, and delivery ownership.',
       quote: 'Built for teams that need clarity, speed, and delivery discipline.',
       metricsHeading: 'System_Performance_Metrics',
       metrics: [
@@ -475,19 +487,19 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       experienceColumns: ['Node / Entity', 'Chronology', 'Primary Mandate'],
       experience: [
         {
-          company: 'Riiid',
+          company: 'Socra AI',
           period: '2025 — Present',
-          role: 'Auth/Gateway, Payment Integration Architect.',
+          role: 'Backend Engineer.',
         },
         {
           company: 'CJ CheilJedang',
           period: '2022 — 2025',
-          role: 'BI Web Platform Developer. Focused on optimization.',
+          role: 'IT Development Researcher.',
         },
         {
           company: 'SolidIT',
           period: '2020 — 2021',
-          role: 'OpenGL 3D Interface Engineering.',
+          role: 'Web Engineer / OpenGL 3D Interface Engineering.',
         },
       ],
       logsTitle: 'Project Logs',
@@ -512,13 +524,38 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       ],
       bio: [
         { label: 'Education', value: 'Ajou University' },
-        { label: 'Languages', value: 'TOEIC 935 / Fluency in English' },
+        { label: 'Languages', value: 'TOEIC 935 / IM1 / Business English' },
+        {
+          label: 'Certifications',
+          value: 'Engineer Information Processing (정보처리기사) / SQL Developer (SQLD)',
+        },
         {
           label: 'Geographic Nodes',
           tags: ['New Zealand', 'Japan', 'Estonia'],
         },
       ],
       logs: [
+        {
+          title: 'Socra AI: Learning Hub & TOEFL AI Features',
+          tags: ['OPENAI', 'LEARNING_HUB', 'TOEFL'],
+          status: '2026_LAUNCH_PREP',
+          tone: 'primary',
+          bullets: [
+            'Integrated the platform with Learning Hub, an AI and analytics server that manages OpenAI API integrations, prompt orchestration, and content serving for the next TOEFL learning products.',
+            'Prepared the launch of new TOEFL Recommendation Learning and TOEFL Voca services by coordinating backend flows across recommendation delivery, service integration, and release-readiness work.',
+          ],
+        },
+        {
+          title: 'Riiid: Billing Migration & Billing Expansion',
+          tags: ['QMS', 'PAYMENT_MIGRATION', 'AUTOBILLING'],
+          status: '2025_PAYMENT_MIGRATION',
+          tone: 'tertiary',
+          bullets: [
+            'Migrated valid active subscriptions and 2025 payment data into the unified payment platform while keeping renewal flows operating normally after cutover.',
+            'Rebuilt billing operations around webhook-driven payment processing and monitoring to improve reliability and shorten issue detection time.',
+            'Expanded localized subscription billing by adding Korea-specific AutoBilling support.',
+          ],
+        },
         {
           title: 'Riiid: Auth Server & Gateway Redevelopment',
           tags: ['AUTHENTICATION', 'JWT', 'REDIS'],
@@ -582,7 +619,7 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       titleAccent: '명확성',
       titleSuffix: ', 속도, 그리고 신뢰를 설계합니다.',
       summary:
-        '레거시 시스템 개선, 성능 튜닝 및 프로젝트 완수를 전문으로 하는 4년차 백엔드/DevOps 엔지니어입니다.',
+        '레거시 시스템 개선, 성능 튜닝 및 프로젝트 완수를 전문으로 하는 5년차 백엔드/DevOps 엔지니어입니다.',
       quote: '명확한 구조, 빠른 실행력, 그리고 책임감 있는 딜리버리가 필요한 팀을 위해 일합니다.',
       metricsHeading: 'System_Performance_Metrics',
       metrics: [
@@ -662,19 +699,19 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       experienceColumns: ['노드 / 소속', '기간', '주요 역할'],
       experience: [
         {
-          company: '뤼이드 (Riiid)',
+          company: 'Socra AI',
           period: '2025 — 현재',
-          role: '인증/게이트웨이 및 결제 연동 아키텍트.',
+          role: 'Backend Engineer',
         },
         {
           company: 'CJ 제일제당',
           period: '2022 — 2025',
-          role: 'BI 웹 플랫폼 개발 및 성능 최적화 담당.',
+          role: 'IT 개발 연구원',
         },
         {
           company: 'SolidIT',
           period: '2020 — 2021',
-          role: 'OpenGL 기반 3D 인터페이스 엔지니어링.',
+          role: '웹 개발 및 OpenGL 기반 3D 인터페이스 엔지니어링.',
         },
       ],
       logsTitle: '프로젝트 로그',
@@ -685,27 +722,49 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       ],
       skills: [
         {
-          label: '// 백엔드',
+          label: '// Backend',
           items: ['Kotlin', 'Java', 'Spring Boot', 'Python', 'JPA'],
         },
         {
-          label: '// 인프라',
+          label: '// Infrastructure',
           items: ['Docker', 'Jenkins', 'Nginx', 'Airflow', 'OCI', 'NCP'],
         },
         {
-          label: '// 데이터_계층',
-          items: ['MySQL', 'Redis', 'Elasticsearch'],
+          label: '// Data Layer',
+          items: ['MySQL', 'Redis', 'RabbitMQ', 'Kafka', 'Elasticsearch'],
         },
       ],
       bio: [
         { label: '학력', value: '아주대학교 (Ajou University)' },
-        { label: '어학', value: 'TOEIC 935 / 영어 능통' },
+        { label: '어학', value: 'TOEIC 935 / IM1 / Business English' },
+        { label: '자격증', value: '정보처리기사 / SQLD' },
         {
           label: '글로벌 경험',
           tags: ['뉴질랜드', '일본', '에스토니아'],
         },
       ],
       logs: [
+        {
+          title: 'Socra AI: Learning Hub 및 TOEFL AI 기능',
+          tags: ['OPENAI', 'LEARNING_HUB', 'TOEFL'],
+          status: '2026_런칭_준비',
+          tone: 'primary',
+          bullets: [
+            'OpenAI API 연동, 프롬프팅, 콘텐츠 서빙, 분석 기능을 담당하는 Learning Hub 서버와 Santa 백엔드를 연동해 차세대 토플 학습 기능의 기반을 구축했습니다.',
+            '새로운 토플 추천학습과 TOEFL Voca 서비스의 런칭을 준비하며 추천 로직, 콘텐츠 전달 흐름, 서비스 연동 포인트를 정비했습니다.',
+          ],
+        },
+        {
+          title: '뤼이드: 결제 Migration 및 Billing Expansion',
+          tags: ['QMS', 'PAYMENT_MIGRATION', 'AUTOBILLING'],
+          status: '2025_결제_마이그레이션',
+          tone: 'tertiary',
+          bullets: [
+            '유효한 활성 구독과 2025년 결제 데이터를 통합 결제 플랫폼으로 마이그레이션하고, 전환 이후에도 구독 갱신 흐름이 정상 동작하도록 안정화했습니다.',
+            'Webhook 기반 결제 처리와 모니터링 체계를 재정비해 결제 운영 신뢰도를 높이고 이슈 감지 시간을 단축했습니다.',
+            '한국 시장에 AutoBilling 기반 구독 결제를 추가해 로컬 결제 플로우와 정기결제 확장을 지원했습니다.',
+          ],
+        },
         {
           title: '뤼이드: 인증 서버 및 게이트웨이 재구축',
           tags: ['인증', 'JWT', 'REDIS'],
@@ -791,6 +850,73 @@ function scrollToSection(sectionId: string) {
   section?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
+function GitHubIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2C6.48 2 2 6.58 2 12.23c0 4.52 2.87 8.35 6.84 9.7.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.88-2.78.62-3.37-1.21-3.37-1.21-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.37-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05A9.35 9.35 0 0 1 12 6.84c.85 0 1.71.12 2.51.36 1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.95-2.35 4.82-4.58 5.07.36.32.68.95.68 1.92 0 1.39-.01 2.5-.01 2.84 0 .27.18.59.69.49A10.22 10.22 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z" />
+    </svg>
+  )
+}
+
+function EmailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <path d="M4 6.5h16A1.5 1.5 0 0 1 21.5 8v8A1.5 1.5 0 0 1 20 17.5H4A1.5 1.5 0 0 1 2.5 16V8A1.5 1.5 0 0 1 4 6.5Z" />
+      <path d="m4 8 8 5 8-5" />
+    </svg>
+  )
+}
+
+function LocaleSwitch({
+  locale,
+  onChangeLocale,
+}: {
+  locale: Locale
+  onChangeLocale: (locale: Locale) => void
+}) {
+  return (
+    <div className="locale-switch" role="group" aria-label="Language">
+      <button
+        type="button"
+        className={locale === 'ko' ? 'locale-button is-active' : 'locale-button'}
+        onClick={() => onChangeLocale('ko')}
+      >
+        KR
+      </button>
+      <button
+        type="button"
+        className={locale === 'en' ? 'locale-button is-active' : 'locale-button'}
+        onClick={() => onChangeLocale('en')}
+      >
+        EN
+      </button>
+    </div>
+  )
+}
+
+function HeaderIconLinks() {
+  return (
+    <div className="header-icon-links">
+      <a
+        className="header-icon-button"
+        href={GITHUB_URL}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Open GitHub profile"
+      >
+        <GitHubIcon />
+      </a>
+      <a
+        className="header-icon-button"
+        href={EMAIL_URL}
+        aria-label="Send email"
+      >
+        <EmailIcon />
+      </a>
+    </div>
+  )
+}
+
 function App() {
   const [screen, setScreen] = useState<ScreenState>(() => readScreenFromHash())
 
@@ -846,11 +972,15 @@ function App() {
   return (
     <div className="app-shell">
       {screen.view === 'home' ? (
-        <HomeScreen data={homeData} onOpenCv={() => navigate('cv')} />
+        <HomeScreen
+          data={homeData}
+          locale={screen.locale}
+          onOpenCv={() => navigate('cv')}
+          onChangeLocale={(locale) => navigate('home', locale)}
+        />
       ) : (
         <>
           <TopBar
-            content={content}
             screen={screen}
             onNavigate={navigate}
           />
@@ -863,11 +993,9 @@ function App() {
 }
 
 function TopBar({
-  content,
   screen,
   onNavigate,
 }: {
-  content: LocaleContent
   screen: ScreenState
   onNavigate: (view: View, locale?: Locale) => void
 }) {
@@ -880,7 +1008,7 @@ function TopBar({
           onClick={() => onNavigate('home')}
           aria-label="Open portfolio home"
         >
-          TERMINAL_ARCHITECT
+          Youngwon
         </button>
 
         <nav className="topbar-nav" aria-label="Primary">
@@ -889,50 +1017,23 @@ function TopBar({
             className={screen.view === 'home' ? 'nav-link is-active' : 'nav-link'}
             onClick={() => onNavigate('home')}
           >
-            {content.nav.home}
+            HOME
           </button>
           <button
             type="button"
             className={screen.view === 'cv' ? 'nav-link is-active' : 'nav-link'}
             onClick={() => onNavigate('cv')}
           >
-            {content.nav.cv}
+            CV
           </button>
-          <a className="nav-link nav-link--external" href={GITHUB_URL} target="_blank" rel="noreferrer">
-            {content.nav.github}
-          </a>
-          <a className="nav-link nav-link--external" href={EMAIL_URL}>
-            {content.nav.email}
-          </a>
         </nav>
 
         <div className="topbar-actions">
-          <div className="locale-switch" role="group" aria-label="Language">
-            <button
-              type="button"
-              className={screen.locale === 'ko' ? 'locale-button is-active' : 'locale-button'}
-              onClick={() => onNavigate(screen.view, 'ko')}
-            >
-              KR
-            </button>
-            <button
-              type="button"
-              className={screen.locale === 'en' ? 'locale-button is-active' : 'locale-button'}
-              onClick={() => onNavigate(screen.view, 'en')}
-            >
-              EN
-            </button>
-          </div>
-
-          <a
-            className="source-button"
-            href={SOURCE_URL}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={content.nav.source}
-          >
-            {'[>]'}
-          </a>
+          <LocaleSwitch
+            locale={screen.locale}
+            onChangeLocale={(locale) => onNavigate(screen.view, locale)}
+          />
+          <HeaderIconLinks />
         </div>
       </div>
     </header>
@@ -941,10 +1042,14 @@ function TopBar({
 
 function HomeScreen({
   data,
+  locale,
   onOpenCv,
+  onChangeLocale,
 }: {
   data: HomePageData
+  locale: Locale
   onOpenCv: () => void
+  onChangeLocale: (locale: Locale) => void
 }) {
   return (
     <div className="terminal-home-shell">
@@ -960,28 +1065,17 @@ function HomeScreen({
 
           <nav className="terminal-home-nav" aria-label="Primary">
             <button type="button" className="terminal-home-nav-link is-active" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              {data.nav.home}
+              HOME
             </button>
             <button type="button" className="terminal-home-nav-link" onClick={onOpenCv}>
-              {data.nav.cv}
-            </button>
-            <button type="button" className="terminal-home-nav-link" onClick={() => scrollToSection('home-projects')}>
-              {data.nav.projects}
-            </button>
-            <button type="button" className="terminal-home-nav-link" onClick={() => scrollToSection('home-contact')}>
-              {data.nav.contact}
+              CV
             </button>
           </nav>
 
-          <a
-            className="terminal-home-icon-button"
-            href={SOURCE_URL}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Open source repository"
-          >
-            {'[>]'}
-          </a>
+          <div className="terminal-home-topbar-actions">
+            <LocaleSwitch locale={locale} onChangeLocale={onChangeLocale} />
+            <HeaderIconLinks />
+          </div>
         </div>
       </header>
 
@@ -1020,10 +1114,12 @@ function HomeScreen({
             </div>
 
             <div className="terminal-home-schema-card">
+              <img
+                className="terminal-home-schema-photo"
+                src="/assets/img/youngwon.png"
+                alt="Portrait of Youngwon"
+              />
               <div className="terminal-home-schema-grid" aria-hidden="true" />
-              <div className="terminal-home-schema-glyph" aria-hidden="true">
-                A/
-              </div>
               <p>{data.hero.schemaLabel}</p>
             </div>
           </div>
@@ -1081,10 +1177,15 @@ function HomeScreen({
                     <div className="terminal-home-project-copy">
                       <h3>{project.title}</h3>
                       <p>{project.summary}</p>
-                      <a href={project.href} target="_blank" rel="noreferrer">
-                        {project.action}
-                        <span aria-hidden="true">-&gt;</span>
-                      </a>
+
+                      <div className="terminal-home-project-links">
+                        {project.links.map((link) => (
+                          <a key={`${project.title}-${link.label}`} href={link.href} target="_blank" rel="noreferrer">
+                            <span>{link.label}</span>
+                            <span aria-hidden="true">-&gt;</span>
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </article>

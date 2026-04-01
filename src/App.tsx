@@ -481,7 +481,7 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       bridgeAction: 'Full Career CV',
     },
     cv: {
-      title: 'Log',
+      title: 'Career Log',
       status: '[SYSTEM_STATUS: ACTIVE_CONTRIBUTOR]',
       summary:
         'Backend engineer focused on reliable systems, launch ownership, and turning uncertain ideas into production-ready products.',
@@ -698,7 +698,7 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       bridgeAction: '전체 경력 확인하기',
     },
     cv: {
-      title: '로그',
+      title: '경력 로그',
       status: '[시스템_상태: 활성_기여자]',
       summary:
         '신뢰성 높은 백엔드 시스템, AI 제품화, 그리고 출시까지 책임지는 실행력을 중심으로 일하는 백엔드 엔지니어입니다.',
@@ -1065,6 +1065,13 @@ function HomeScreen({
   onOpenCv: () => void
   onChangeLocale: (locale: Locale) => void
 }) {
+  const [isTechExpanded, setIsTechExpanded] = useState(false)
+  const mobileVisibleTechCount = 5
+  const hiddenTechCount = Math.max(0, data.ecosystem.stack.length - mobileVisibleTechCount)
+  const techToggleLabel = isTechExpanded
+    ? locale === 'ko' ? '접기' : 'Show Less'
+    : locale === 'ko' ? `${hiddenTechCount}개 더 보기` : `Show ${hiddenTechCount} More`
+
   return (
     <div className="terminal-home-shell">
       <header className="terminal-home-topbar">
@@ -1224,13 +1231,27 @@ function HomeScreen({
               </div>
             </div>
 
-            <div className="terminal-home-tech-grid">
-              {data.ecosystem.stack.map((item) => (
-                <article key={item} className="terminal-home-tech-chip">
-                  <span aria-hidden="true" />
-                  <p>{item}</p>
-                </article>
-              ))}
+            <div className={isTechExpanded ? 'terminal-home-tech-stack-shell is-expanded' : 'terminal-home-tech-stack-shell'}>
+              <div id="home-tech-grid" className="terminal-home-tech-grid">
+                {data.ecosystem.stack.map((item) => (
+                  <article key={item} className="terminal-home-tech-chip">
+                    <span aria-hidden="true" />
+                    <p>{item}</p>
+                  </article>
+                ))}
+              </div>
+
+              {hiddenTechCount > 0 ? (
+                <button
+                  type="button"
+                  className="terminal-home-tech-toggle"
+                  onClick={() => setIsTechExpanded((value) => !value)}
+                  aria-controls="home-tech-grid"
+                  aria-expanded={isTechExpanded}
+                >
+                  {techToggleLabel}
+                </button>
+              ) : null}
             </div>
           </div>
         </section>

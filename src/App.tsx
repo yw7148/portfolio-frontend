@@ -51,6 +51,11 @@ type BioItem = {
   tags?: string[]
 }
 
+type CvSnapshotItem = {
+  label: string
+  value: string
+}
+
 type ProjectLog = {
   title: string
   tags: string[]
@@ -155,12 +160,13 @@ type LocaleContent = {
   cv: {
     title: string
     status: string
+    summary: string
+    snapshot: CvSnapshotItem[]
     contactTitle: string
     stackTitle: string
     bioTitle: string
     experienceTitle: string
     experienceMeta: string
-    experienceColumns: [string, string, string]
     experience: ExperienceRow[]
     logsTitle: string
     logsMeta: string
@@ -184,8 +190,6 @@ const DEFAULT_SCREEN: ScreenState = {
 
 const GITHUB_URL = 'https://github.com/yw7148'
 const SOURCE_URL = 'https://github.com/yw7148/portfolio-frontend'
-const README_URL = 'https://github.com/yw7148/portfolio-frontend/blob/main/README.md'
-const PORTFOLIO_URL = 'https://youngwon.me'
 const EMAIL_URL = 'mailto:youngwon@youngwon.me'
 const CURRENT_YEAR = new Date().getFullYear()
 
@@ -281,7 +285,7 @@ const mockHomeData: Record<Locale, HomePageData> = {
       action: 'Start a conversation',
     },
     footer: {
-      statusText: `© ${CURRENT_YEAR} Young-won Kim. Backend & DevOps Engineer.`,
+      statusText: `© ${CURRENT_YEAR} Young-won Kim. Backend Engineer.`,
       networkLabel: 'youngwon.me',
       links: [
         { label: 'GitHub', href: GITHUB_URL },
@@ -407,7 +411,7 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       titleAccent: 'Clarity',
       titleSuffix: ', Speed, and Reliability.',
       summary:
-        'A 5th-year Backend/DevOps Engineer specializing in legacy rescue, performance tuning, and delivery ownership.',
+        'A 5th-year backend engineer specializing in legacy rescue, performance tuning, and delivery ownership.',
       quote: 'Built for teams that need clarity, speed, and delivery discipline.',
       metricsHeading: 'System_Performance_Metrics',
       metrics: [
@@ -477,14 +481,19 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       bridgeAction: 'Full Career CV',
     },
     cv: {
-      title: 'Full Career Narrative & Project Log',
+      title: 'Log',
       status: '[SYSTEM_STATUS: ACTIVE_CONTRIBUTOR]',
+      summary:
+        'Backend engineer focused on reliable systems, launch ownership, and turning uncertain ideas into production-ready products.',
+      snapshot: [
+        { label: 'Current', value: 'Backend Engineer at Socra AI' },
+        { label: 'Strength', value: 'Ability to identify the root cause of bottlenecks, make informed trade-offs, and deliver well-structured systems to production' },
+      ],
       contactTitle: 'Communications',
       stackTitle: 'Stack.json',
       bioTitle: 'Bio_Data',
       experienceTitle: 'Experience Lifecycle',
       experienceMeta: 'Table_v2.1',
-      experienceColumns: ['Node / Entity', 'Chronology', 'Primary Mandate'],
       experience: [
         {
           company: 'Socra AI',
@@ -588,7 +597,7 @@ const portfolioContent: Record<Locale, LocaleContent> = {
         },
         {
           title: 'Portfolio & Public Server',
-          tags: ['OCI', 'DEVOPS', 'SELF_HOSTED'],
+          tags: ['OCI', 'PLATFORM', 'SELF_HOSTED'],
           status: 'INFRA_ADMIN',
           tone: 'primary',
           bullets: [
@@ -619,7 +628,7 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       titleAccent: '명확성',
       titleSuffix: ', 속도, 그리고 신뢰를 설계합니다.',
       summary:
-        '레거시 시스템 개선, 성능 튜닝 및 프로젝트 완수를 전문으로 하는 5년차 백엔드/DevOps 엔지니어입니다.',
+        '레거시 시스템 개선, 성능 튜닝 및 프로젝트 완수를 전문으로 하는 5년차 백엔드 엔지니어입니다.',
       quote: '명확한 구조, 빠른 실행력, 그리고 책임감 있는 딜리버리가 필요한 팀을 위해 일합니다.',
       metricsHeading: 'System_Performance_Metrics',
       metrics: [
@@ -689,14 +698,19 @@ const portfolioContent: Record<Locale, LocaleContent> = {
       bridgeAction: '전체 경력 확인하기',
     },
     cv: {
-      title: '경력 기술서 및 프로젝트 로그',
+      title: '로그',
       status: '[시스템_상태: 활성_기여자]',
+      summary:
+        '신뢰성 높은 백엔드 시스템, AI 제품화, 그리고 출시까지 책임지는 실행력을 중심으로 일하는 백엔드 엔지니어입니다.',
+      snapshot: [
+        { label: '현재', value: 'Socra AI Backend Engineer' },
+        { label: '강점', value: '병목의 본질을 파악하는 분석력, 그리고 Trade-off를 고려한 구조적 설계 및 출시까지 완수하는 실행력' },
+      ],
       contactTitle: 'Communications',
       stackTitle: 'Stack.json',
       bioTitle: 'Bio_Data',
       experienceTitle: '경력 생애주기',
       experienceMeta: 'Table_v2.1',
-      experienceColumns: ['노드 / 소속', '기간', '주요 역할'],
       experience: [
         {
           company: 'Socra AI',
@@ -797,7 +811,7 @@ const portfolioContent: Record<Locale, LocaleContent> = {
         },
         {
           title: '포트폴리오 및 퍼블릭 서버 운영',
-          tags: ['OCI', 'DEVOPS', '셀프호스팅'],
+          tags: ['OCI', '플랫폼', '셀프호스팅'],
           status: '인프라_관리',
           tone: 'primary',
           bullets: [
@@ -985,7 +999,7 @@ function App() {
             onNavigate={navigate}
           />
           <CVScreen content={content} />
-          <Footer content={content} />
+          <Footer footer={homeData.footer} />
         </>
       )}
     </div>
@@ -1232,24 +1246,7 @@ function HomeScreen({
         </section>
       </main>
 
-      <footer className="terminal-home-footer">
-        <div className="container terminal-home-footer-row">
-          <p>{data.footer.statusText}</p>
-
-          <div className="terminal-home-footer-links">
-            {data.footer.links.map((link) => (
-              <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          <div className="terminal-home-network">
-            <span aria-hidden="true" />
-            <p>{data.footer.networkLabel}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer footer={data.footer} />
     </div>
   )
 }
@@ -1259,98 +1256,45 @@ function CVScreen({ content }: { content: LocaleContent }) {
     <main className="screen screen-cv">
       <div className="container">
         <header className="cv-header">
-          <h1>{content.cv.title}</h1>
-          <p>{content.cv.status}</p>
+          <div className="cv-header-copy">
+            <span className="cv-status-pill">{content.cv.status}</span>
+            <h1>{content.cv.title}</h1>
+            <p className="cv-summary">{content.cv.summary}</p>
+          </div>
+
+          <div className="cv-snapshot-list">
+            {content.cv.snapshot.map((item) => (
+              <article key={item.label} className="cv-snapshot-item">
+                <p>{item.label}</p>
+                <strong>{item.value}</strong>
+              </article>
+            ))}
+          </div>
         </header>
 
         <div className="cv-grid">
-          <aside className="sidebar">
-            <section className="panel">
-              <h2 className="panel-title">{content.cv.contactTitle}</h2>
-              <div className="contact-list">
-                {content.cv.contacts.map((contact) => (
-                  <a
-                    key={contact.label}
-                    href={contact.href}
-                    className="contact-link"
-                    target={contact.href.startsWith('http') ? '_blank' : undefined}
-                    rel={contact.href.startsWith('http') ? 'noreferrer' : undefined}
-                  >
-                    <span>{contact.label}</span>
-                    <span aria-hidden="true">-&gt;</span>
-                  </a>
-                ))}
-              </div>
-            </section>
-
-            <section className="stack-section">
-              <h2 className="sidebar-title">{content.cv.stackTitle}</h2>
-
-              <div className="stack-groups">
-                {content.cv.skills.map((group) => (
-                  <div key={group.label} className="stack-group">
-                    <p>{group.label}</p>
-                    <div className="chip-row">
-                      {group.items.map((item) => (
-                        <span key={`${group.label}-${item}`} className="chip chip--dense">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            <section className="panel panel--ghost">
-              <h2 className="panel-title panel-title--muted">{content.cv.bioTitle}</h2>
-
-              <div className="bio-list">
-                {content.cv.bio.map((item) => (
-                  <article key={item.label} className="bio-item">
-                    <p>{item.label}</p>
-                    {item.value ? <strong>{item.value}</strong> : null}
-                    {item.tags ? (
-                      <div className="chip-row">
-                        {item.tags.map((tag) => (
-                          <span key={`${item.label}-${tag}`} className="outline-chip">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    ) : null}
-                  </article>
-                ))}
-              </div>
-            </section>
-          </aside>
-
           <div className="cv-content">
             <section className="content-block">
-              <div className="section-heading">
+              <div className="section-heading section-heading--compact">
                 <h2 className="section-title-large">{content.cv.experienceTitle}</h2>
                 <p className="section-hint">{content.cv.experienceMeta}</p>
               </div>
 
-              <div className="timeline-table" role="table" aria-label={content.cv.experienceTitle}>
-                <div className="timeline-row timeline-row--header" role="row">
-                  <span role="columnheader">{content.cv.experienceColumns[0]}</span>
-                  <span role="columnheader">{content.cv.experienceColumns[1]}</span>
-                  <span role="columnheader">{content.cv.experienceColumns[2]}</span>
-                </div>
-
+              <div className="cv-panel timeline-list" aria-label={content.cv.experienceTitle}>
                 {content.cv.experience.map((entry) => (
-                  <article key={`${entry.company}-${entry.period}`} className="timeline-row" role="row">
-                    <strong>{entry.company}</strong>
-                    <span>{entry.period}</span>
-                    <span>{entry.role}</span>
+                  <article key={`${entry.company}-${entry.period}`} className="timeline-item">
+                    <div className="timeline-copy">
+                      <strong>{entry.company}</strong>
+                      <p>{entry.role}</p>
+                    </div>
+                    <span className="timeline-period">{entry.period}</span>
                   </article>
                 ))}
               </div>
             </section>
 
             <section className="content-block">
-              <div className="section-heading">
+              <div className="section-heading section-heading--compact">
                 <h2 className="section-title-large">{content.cv.logsTitle}</h2>
                 <p className="section-hint">{content.cv.logsMeta}</p>
               </div>
@@ -1358,56 +1302,111 @@ function CVScreen({ content }: { content: LocaleContent }) {
               <div className="log-list">
                 {content.cv.logs.map((log) => (
                   <article key={log.title} className={`log-card tone-${log.tone}`}>
-                    <div className="log-accent" aria-hidden="true" />
-                    <div className="log-content">
-                      <div className="log-header">
-                        <div>
-                          <h3>{log.title}</h3>
-                          <p className="tag-line">
-                            {log.tags.map((tag) => `#${tag}`).join(' ')}
-                          </p>
-                        </div>
-                        <span className="status-pill">{log.status}</span>
-                      </div>
-
-                      <div className="log-body">
-                        <ol>
-                          {log.bullets.map((bullet, index) => (
-                            <li key={`${log.title}-${index}`}>
-                              <span>{String(index + 1).padStart(2, '0')}</span>
-                              <p>{bullet}</p>
-                            </li>
-                          ))}
-                        </ol>
-                      </div>
+                    <div className="log-meta">
+                      <span className="status-pill">{log.status}</span>
+                      <p className="tag-line">{log.tags.map((tag) => `#${tag}`).join(' ')}</p>
+                    </div>
+                    <div className="log-main">
+                      <h3>{log.title}</h3>
+                      <ul className="log-points">
+                        {log.bullets.map((bullet, index) => (
+                          <li key={`${log.title}-${index}`}>{bullet}</li>
+                        ))}
+                      </ul>
                     </div>
                   </article>
                 ))}
               </div>
             </section>
           </div>
+
+          <aside className="sidebar">
+            <section className="sidebar-card">
+              <div className="sidebar-section sidebar-section--flush">
+                <h2 className="panel-title">{content.cv.contactTitle}</h2>
+                <div className="contact-list">
+                  {content.cv.contacts.map((contact) => (
+                    <a
+                      key={contact.label}
+                      href={contact.href}
+                      className="contact-link"
+                      target={contact.href.startsWith('http') ? '_blank' : undefined}
+                      rel={contact.href.startsWith('http') ? 'noreferrer' : undefined}
+                    >
+                      <span>{contact.label}</span>
+                      <span aria-hidden="true">-&gt;</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="sidebar-section stack-section">
+                <h2 className="sidebar-title">{content.cv.stackTitle}</h2>
+
+                <div className="stack-groups">
+                  {content.cv.skills.map((group) => (
+                    <div key={group.label} className="stack-group">
+                      <p>{group.label}</p>
+                      <div className="chip-row">
+                        {group.items.map((item) => (
+                          <span key={`${group.label}-${item}`} className="chip chip--dense">
+                            {item}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="sidebar-card sidebar-card--soft">
+              <div className="sidebar-section sidebar-section--flush">
+                <h2 className="panel-title panel-title--muted">{content.cv.bioTitle}</h2>
+
+                <div className="bio-list">
+                  {content.cv.bio.map((item) => (
+                    <article key={item.label} className="bio-item">
+                      <p>{item.label}</p>
+                      {item.value ? <strong>{item.value}</strong> : null}
+                      {item.tags ? (
+                        <div className="chip-row">
+                          {item.tags.map((tag) => (
+                            <span key={`${item.label}-${tag}`} className="outline-chip">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      ) : null}
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </aside>
         </div>
       </div>
     </main>
   )
 }
 
-function Footer({ content }: { content: LocaleContent }) {
+function Footer({ footer }: { footer: HomePageData['footer'] }) {
   return (
-    <footer className="footer">
-      <div className="container footer-row">
-        <p>{content.footer.statusText}</p>
+    <footer className="terminal-home-footer">
+      <div className="container terminal-home-footer-row">
+        <p>{footer.statusText}</p>
 
-        <div className="footer-links">
-          <a href={README_URL} target="_blank" rel="noreferrer">
-            {content.footer.documentation}
-          </a>
-          <a href={SOURCE_URL} target="_blank" rel="noreferrer">
-            {content.footer.source}
-          </a>
-          <a href={PORTFOLIO_URL} target="_blank" rel="noreferrer">
-            {content.footer.status}
-          </a>
+        <div className="terminal-home-footer-links">
+          {footer.links.map((link) => (
+            <a key={link.label} href={link.href} target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="terminal-home-network">
+          <span aria-hidden="true" />
+          <p>{footer.networkLabel}</p>
         </div>
       </div>
     </footer>

@@ -31,7 +31,7 @@ export default async function HomePage({
                 yOffset={8}
                 text={
                   locale === "ko"
-                    ? `${data.name}입니다`
+                    ? `${data.name}`
                     : `Hi, I'm ${data.name.split(" ")[0]}`
                 }
               />

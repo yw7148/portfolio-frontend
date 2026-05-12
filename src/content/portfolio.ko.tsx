@@ -7,13 +7,13 @@ const GITHUB_URL = "https://github.com/yw7148";
 const EMAIL_URL = "mailto:youngwon@youngwon.me";
 
 export const portfolioKo = {
-  name: "김영원",
-  initials: "YK",
+  name: "영원",
+  initials: "YW",
   url: "https://youngwon.me",
   location: "대한민국 서울",
   locationLink: "https://www.google.com/maps/place/Seoul",
   description:
-    "Kotlin, Spring, 시스템 아키텍처, AI 서비스 파이프라인에 집중하는 백엔드 엔지니어입니다.",
+    "Kotlin, Spring, 시스템 아키텍처에 집중하는 백엔드 엔지니어",
   summary:
     "복잡도가 올라가도 이해 가능한 백엔드 시스템을 만듭니다. Kotlin/Spring 서비스, Redis/Kafka 기반 안정화 패턴, OCI와 k3s 운영, 실제 서비스로 배포하고 관찰할 수 있는 AI/RAG 파이프라인을 다룹니다.",
   avatarUrl: "/assets/img/youngwon.png",
@@ -27,13 +27,13 @@ export const portfolioKo = {
     work: "경력",
     education: "학력",
     impact: "아키텍처 임팩트",
-    contact: "연락",
+    contact: "Contact",
     contactTitle: "안정적인 시스템을 함께 만들고 싶다면",
     contactDescription:
       "더 자세한 경력, 아키텍처, 성능 개선, 인프라 이야기는 CV 페이지에서 확인할 수 있습니다.",
     cvTitle: "경력기술서",
     cvSubtitle:
-      "시스템 아키텍처, 고성능 인프라, AI 서비스 파이프라인을 중심으로 정리한 상세 경력입니다.",
+      "시스템 아키텍처, 고성능 인프라, 고사용성 서비스를 중심으로 정리한 상세 경력입니다.",
     localeToggle: "English",
   },
   navbar: [

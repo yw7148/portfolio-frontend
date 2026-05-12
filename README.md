@@ -49,6 +49,33 @@ npm install
 npm run dev
 ```
 
+## Environment
+
+No environment variables are required for the current frontend.
+
+The previous Vite proxy variables are intentionally not used by this Next.js
+app. If new runtime configuration is introduced later, add it to `.env.example`
+at the same time as the code that reads it.
+
+## Deployment Notes
+
+The app is expected to deploy as a Next.js project on Vercel.
+
+- Framework preset: `Next.js`
+- Build command: `npm run build`
+- Output directory: Vercel default for Next.js
+- Public routes: `/en`, `/ko`, `/en/cv`, `/ko/cv`
+
+If a deployment is `READY` but the public URL returns Vercel
+`x-vercel-error: NOT_FOUND`, first check Vercel project settings rather than
+environment variables:
+
+- Domains for `youngwon.me` and `portfolio.youngwon.me` are assigned to this
+  project and show `Valid Configuration`.
+- Production Deployment Protection is disabled or intentionally configured for
+  public access.
+- The production alias points to the latest ready deployment.
+
 ## Verification
 
 ```bash

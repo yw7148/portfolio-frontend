@@ -18,16 +18,16 @@ export const portfolioKo = {
   location: "대한민국 서울",
   locationLink: "https://www.google.com/maps/place/Seoul",
   description:
-    "Kotlin, Spring, 시스템 아키텍처, AI 서비스 파이프라인에 집중하는 백엔드 엔지니어입니다.",
+    "데이터 적합성, 멱등성, 엣지 케이스를 기준으로 Kotlin/Spring 백엔드를 설계하는 엔지니어입니다.",
   summary:
-    "복잡도가 올라가도 이해 가능한 백엔드 시스템을 만듭니다. Kotlin/Spring 서비스, Redis/Kafka 기반 안정화 패턴, OCI와 k3s 운영, 실제 서비스로 배포하고 관찰할 수 있는 AI/RAG 파이프라인을 다룹니다.",
+    "풀스택을 다룰 수 있지만 중심은 백엔드입니다. 요구사항을 데이터 모델과 상태 전이 관점에서 검증하고, 재시도와 중복 요청에도 흔들리지 않는 멱등한 흐름, 동시성/누락 데이터 같은 엣지 케이스까지 고려해 운영 가능한 시스템을 만듭니다.",
   avatarUrl: "/assets/img/youngwon.png",
   labels: {
     about: "소개",
     services: "운영 중인 서비스",
-    servicesTitle: "개인 서비스를 하나의 시스템처럼 운영합니다",
+    servicesTitle: "백엔드 시스템을 운영 가능한 형태로 다듬습니다",
     servicesDescription:
-      "현재 운영하거나 적극적으로 발전시키는 공개 서비스와 인프라 표면을 압축해 보여줍니다.",
+      "데이터 모델, API 경계, 비동기 처리, 운영 인프라를 함께 고려해 만든 작업들을 압축해 보여줍니다.",
     skills: "핵심 스택",
     work: "경력",
     education: "학력",
@@ -38,7 +38,7 @@ export const portfolioKo = {
       "더 자세한 경력, 아키텍처, 성능 개선, 인프라 이야기는 CV 페이지에서 확인할 수 있습니다.",
     cvTitle: "경력기술서",
     cvSubtitle:
-      "시스템 아키텍처, 고성능 인프라, AI 서비스 파이프라인을 중심으로 정리한 상세 경력입니다.",
+      "데이터 적합성, 멱등한 처리 흐름, 운영 안정성을 중심으로 정리한 상세 경력입니다.",
     localeToggle: "English",
   },
   navbar: [
@@ -71,9 +71,9 @@ export const portfolioKo = {
     },
   },
   strengths: [
-    "불확실한 제품 아이디어를 안정적인 서비스 경계와 전달 계획으로 정리합니다.",
-    "캐싱, 인덱싱, 동시성 제어, 관찰 가능성을 통해 느리거나 불안정한 시스템을 개선합니다.",
-    "백엔드, 인프라, AI 파이프라인을 연결해 프로토타입이 아니라 운영 가능한 서비스로 만듭니다.",
+    "요구사항을 데이터 모델과 상태 전이 관점에서 검증해 도메인에 맞는 저장/조회 경계를 잡습니다.",
+    "재시도, 중복 요청, 비동기 이벤트가 들어와도 결과가 흔들리지 않도록 멱등한 처리 흐름을 설계합니다.",
+    "정상 경로 밖의 권한, 동시성, 누락/불일치 데이터까지 먼저 의심하며 운영 가능한 백엔드를 만듭니다.",
   ],
   skills: [
     { name: "Kotlin", icon: "/assets/img/skills/Kotlin-Dark.svg" },
@@ -98,7 +98,7 @@ export const portfolioKo = {
       href: "https://youngwon.me",
       dates: "운영 중",
       description:
-        "포트폴리오, 백엔드 API, 서버 자동화, OCI와 Kubernetes 기반 인프라를 하나의 공개 서비스 표면으로 관리하는 개인 플랫폼입니다.",
+        "백엔드 API, 서버 자동화, OCI와 Kubernetes 기반 인프라를 하나의 운영 경계 안에서 관리하는 개인 플랫폼입니다.",
       technologies: ["OCI", "k3s", "Docker", "Nginx", "Terraform"],
       image: "/assets/img/server.png",
       links: [
@@ -115,17 +115,17 @@ export const portfolioKo = {
       ],
     },
     {
-      title: "Portfolio Frontend",
-      href: SOURCE_URL,
-      dates: "활성",
+      title: "Backend Reliability Patterns",
+      href: GITHUB_URL,
+      dates: "정리 중",
       description:
-        "랜딩 페이지를 빽빽한 이력서가 아니라 운영 서비스, 아키텍처 작업, CV 상세 정보로 이어지는 이중 언어 프로젝트 허브로 구성합니다.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "next-intl"],
-      image: "/assets/img/youngwon.png",
+        "데이터 검증, 트랜잭션 경계, 멱등한 요청 처리, 재시도/중복 이벤트 대응처럼 반복해서 적용하는 백엔드 설계 기준을 정리합니다.",
+      technologies: ["Kotlin", "Spring Boot", "PostgreSQL", "Redis", "Kafka"],
+      image: "/assets/img/server.png",
       links: [
         {
-          type: "Source",
-          href: SOURCE_URL,
+          type: "GitHub",
+          href: GITHUB_URL,
           icon: <Icons.github className="size-3" />,
         },
       ],
@@ -165,16 +165,16 @@ export const portfolioKo = {
       start: "2022.01",
       end: "2025.01",
       description:
-        "AI/Data Science 팀을 위한 Computational Biology 웹 플랫폼을 구축하고 운영했습니다. Elasticsearch, Redis, CI/CD, 모니터링으로 검색과 통합 조회 성능을 개선했습니다.",
+        "AI/Data Science 팀을 위한 Computational Biology 플랫폼을 구축하고 운영했습니다. Elasticsearch, Redis, CI/CD, 모니터링으로 검색과 통합 조회 성능을 개선했습니다.",
     },
     {
       company: "SolidIT",
       location: "서울",
-      title: "Web Developer / Graphics Developer",
+      title: "Graphics / Platform Developer",
       start: "2020.12",
       end: "2021.12",
       description:
-        "웹과 OpenGL 기반 3D 인터페이스를 함께 다루며 렌더링 성능을 회복하고 그래픽 중심 도구를 사용 가능한 플랫폼 흐름과 연결했습니다.",
+        "OpenGL 기반 3D 도구의 렌더링 성능을 회복하고 그래픽 중심 기능을 안정적으로 사용할 수 있는 플랫폼 흐름과 연결했습니다.",
     },
   ],
   education: [
@@ -228,7 +228,7 @@ export const portfolioKo = {
       period: "SolidIT",
       description:
         "거의 사용할 수 없던 프레임 수준의 렌더링 성능을 안정적인 상호작용이 가능한 범위로 개선했습니다.",
-      tags: ["OpenGL", "Performance", "Web Platform"],
+      tags: ["OpenGL", "Performance", "3D Platform"],
     },
   ],
 } satisfies PortfolioData;

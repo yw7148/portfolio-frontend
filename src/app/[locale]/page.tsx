@@ -10,7 +10,6 @@ import {
   ArrowRight,
   Code2,
   Container,
-  Cpu,
   Database,
   HardDrive,
   Lock,
@@ -34,82 +33,82 @@ export default async function HomePage({
     locale === "ko"
       ? {
           eyebrow: "Backend Engineer",
-          title: "확장 가능한 백엔드 시스템을 설계합니다",
+          title: "데이터가 어긋나지 않는 백엔드를 설계합니다",
           primaryCta: "CV 보기",
           secondaryCta: "프로젝트 보기",
           contactCta: "연락하기",
           strengthsTitle: "핵심 역량",
-          strengthTitles: ["서비스 경계", "성능과 안정성", "운영형 AI"],
+          strengthTitles: ["데이터 적합성", "멱등한 흐름", "엣지 케이스"],
           techStackTitle: "기술 스택",
-          architectureTitle: "운영 아키텍처",
+          architectureTitle: "백엔드 설계 관점",
           architectureDescription:
-            "프론트엔드부터 게이트웨이, 백엔드 서비스, 데이터 계층까지 운영 관점으로 연결합니다.",
+            "요청, 상태, 데이터가 어긋나지 않도록 API 경계, 트랜잭션, 비동기 처리, 운영 관찰 지점을 함께 봅니다.",
           focusTitle: "현재 집중 분야",
-          focusItems: ["Kotlin/Spring 백엔드", "AI 기능 통합", "OCI/k3s 운영"],
+          focusItems: ["데이터 적합성", "멱등한 처리", "엣지 케이스 대응"],
           architectureLayers: [
             {
-              title: "Frontend",
-              items: ["Next.js", "TypeScript", "Tailwind CSS"],
+              title: "Domain & API",
+              items: ["Kotlin", "Spring Boot", "Validation"],
             },
             {
-              title: "Gateway",
-              items: ["Authentication", "Routing", "Rate Limiting"],
+              title: "Data Layer",
+              items: ["PostgreSQL", "Transactions", "Consistency"],
             },
             {
-              title: "Backend",
-              items: ["Kotlin", "Spring Boot", "Python"],
+              title: "Async & Ops",
+              items: ["Redis", "Kafka", "Observability"],
             },
           ],
           supportLayers: [
-            { title: "Database", value: "PostgreSQL / MySQL" },
-            { title: "Cache", value: "Redis" },
-            { title: "Security", value: "JWT / OAuth" },
+            { title: "데이터 적합성", value: "도메인 모델 / 제약 조건" },
+            { title: "멱등성", value: "재시도 / 중복 요청" },
+            { title: "엣지 케이스", value: "동시성 / 누락 데이터" },
           ],
         }
       : {
           eyebrow: "Backend Engineer",
-          title: "Designing backend systems that scale",
+          title: "Designing backends where data stays aligned",
           primaryCta: "View CV",
           secondaryCta: "View Projects",
           contactCta: "Contact",
           strengthsTitle: "Core Strengths",
           strengthTitles: [
-            "Service Boundaries",
-            "Performance & Reliability",
-            "Production AI",
+            "Data Fitness",
+            "Idempotent Flows",
+            "Edge Cases",
           ],
           techStackTitle: "Tech Stack",
-          architectureTitle: "Operating Architecture",
+          architectureTitle: "Backend Design Lens",
           architectureDescription:
-            "A simple view of how I connect frontend surfaces, gateway boundaries, backend services, and data layers for production use.",
+            "I look at API boundaries, transactions, async workflows, and observability together so requests, state, and data stay aligned.",
           focusTitle: "Current Focus",
           focusItems: [
-            "Kotlin/Spring backend",
-            "AI feature integration",
-            "OCI/k3s operations",
+            "Data fitness",
+            "Idempotent handling",
+            "Edge-case coverage",
           ],
           architectureLayers: [
             {
-              title: "Frontend",
-              items: ["Next.js", "TypeScript", "Tailwind CSS"],
+              title: "Domain & API",
+              items: ["Kotlin", "Spring Boot", "Validation"],
             },
             {
-              title: "Gateway",
-              items: ["Authentication", "Routing", "Rate Limiting"],
+              title: "Data Layer",
+              items: ["PostgreSQL", "Transactions", "Consistency"],
             },
             {
-              title: "Backend",
-              items: ["Kotlin", "Spring Boot", "Python"],
+              title: "Async & Ops",
+              items: ["Redis", "Kafka", "Observability"],
             },
           ],
           supportLayers: [
-            { title: "Database", value: "PostgreSQL / MySQL" },
-            { title: "Cache", value: "Redis" },
-            { title: "Security", value: "JWT / OAuth" },
+            { title: "Data Fitness", value: "Domain model / constraints" },
+            { title: "Idempotency", value: "Retries / duplicate requests" },
+            { title: "Edge Cases", value: "Concurrency / missing data" },
           ],
         };
   const strengthIcons = [Server, Shield, Zap];
-  const architectureIcons = [Cpu, Network, Server];
+  const architectureIcons = [Server, Database, Network];
   const supportIcons = [HardDrive, Zap, Lock];
 
   return (

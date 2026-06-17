@@ -12,8 +12,8 @@ const GITHUB_URL = "https://github.com/yw7148";
 const EMAIL_URL = "mailto:youngwon@youngwon.me";
 
 export const portfolioKo = {
-  name: "김영원",
-  initials: "YK",
+  name: "영원",
+  initials: "YW",
   url: "https://youngwon.me",
   location: "대한민국 서울",
   locationLink: "https://www.google.com/maps/place/Seoul",
@@ -32,7 +32,7 @@ export const portfolioKo = {
     work: "경력",
     education: "학력",
     impact: "아키텍처 임팩트",
-    contact: "연락",
+    contact: "Contact",
     contactTitle: "안정적인 시스템을 함께 만들고 싶다면",
     contactDescription:
       "더 자세한 경력, 아키텍처, 성능 개선, 인프라 이야기는 CV 페이지에서 확인할 수 있습니다.",

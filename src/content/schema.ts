@@ -8,7 +8,7 @@ export type LinkItem = {
 };
 
 export type NavItem = {
-  href: "/" | "/cv";
+  href: string;
   icon: IconComponent;
   label: string;
 };

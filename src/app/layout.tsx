@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     template: "%s | Youngwon Kim",
   },
   description:
-    "Backend engineer focused on Kotlin, Spring, system architecture, infrastructure, and AI service pipelines.",
+    "Backend engineer focused on data fitness, idempotency, edge cases, Kotlin, Spring, and operational reliability.",
   robots: {
     index: true,
     follow: true,

@@ -1,6 +1,11 @@
 import { Icons } from "@/components/icons";
 import type { PortfolioData } from "./schema";
-import { FileTextIcon, HomeIcon } from "lucide-react";
+import {
+  BriefcaseBusinessIcon,
+  FileTextIcon,
+  HomeIcon,
+  MailIcon,
+} from "lucide-react";
 
 const SOURCE_URL = "https://github.com/yw7148/portfolio-frontend";
 const GITHUB_URL = "https://github.com/yw7148";
@@ -13,16 +18,16 @@ export const portfolioEn = {
   location: "Seoul, South Korea",
   locationLink: "https://www.google.com/maps/place/Seoul",
   description:
-    "Backend engineer focused on Kotlin, Spring, system architecture, and AI service pipelines.",
+    "Backend engineer designing Kotlin/Spring systems around data fitness, idempotency, and edge-case handling.",
   summary:
-    "I build backend systems that stay understandable under pressure: Kotlin and Spring services, Redis/Kafka-backed reliability patterns, OCI and k3s operations, and AI/RAG pipelines that can be shipped and monitored as real services.",
+    "I can work full-stack, but my center of gravity is backend engineering. I validate requirements through data models and state transitions, design idempotent flows that tolerate retries and duplicate requests, and look for concurrency, missing-data, and inconsistency edge cases before they reach production.",
   avatarUrl: "/assets/img/youngwon.png",
   labels: {
     about: "About",
     services: "Operating Services",
-    servicesTitle: "Personal services running as one system",
+    servicesTitle: "Backend systems shaped for operation",
     servicesDescription:
-      "A compact map of the public services and infrastructure surfaces I operate or actively evolve.",
+      "A compact map of work shaped around data models, API boundaries, asynchronous processing, and operating infrastructure.",
     skills: "Core Stack",
     work: "Career History",
     education: "Education",
@@ -33,12 +38,14 @@ export const portfolioEn = {
       "For deeper career details, the CV page expands the architecture, performance, and infrastructure stories.",
     cvTitle: "CV",
     cvSubtitle:
-      "Career history with emphasis on system architecture, high-performance infrastructure, and AI service pipelines.",
+      "Career history with emphasis on data fitness, idempotent processing, and operational reliability.",
     localeToggle: "Korean",
   },
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/cv", icon: FileTextIcon, label: "CV" },
+    { href: "/#projects", icon: BriefcaseBusinessIcon, label: "Projects" },
+    { href: "/#contact", icon: MailIcon, label: "Contact" },
   ],
   contact: {
     email: "youngwon@youngwon.me",
@@ -64,9 +71,9 @@ export const portfolioEn = {
     },
   },
   strengths: [
-    "Clarifies uncertain product ideas into stable service boundaries and delivery plans.",
-    "Optimizes slow or fragile systems with caching, indexing, concurrency control, and observability.",
-    "Connects backend, infrastructure, and AI pipeline work so services can be deployed and operated, not just prototyped.",
+    "Validates requirements through data models and state transitions to set storage and query boundaries that fit the domain.",
+    "Designs idempotent processing so retries, duplicate requests, and asynchronous events do not change the final outcome.",
+    "Builds operable backends by looking past the happy path into permissions, concurrency, missing data, and inconsistent states.",
   ],
   skills: [
     { name: "Kotlin", icon: "/assets/img/skills/Kotlin-Dark.svg" },
@@ -91,7 +98,7 @@ export const portfolioEn = {
       href: "https://youngwon.me",
       dates: "Operating",
       description:
-        "A personal platform deployed as a public service surface: portfolio, backend APIs, server automation, and infrastructure managed across OCI and Kubernetes.",
+        "A personal platform for backend APIs, server automation, and infrastructure managed across OCI and Kubernetes as one operating boundary.",
       technologies: ["OCI", "k3s", "Docker", "Nginx", "Terraform"],
       image: "/assets/img/server.png",
       links: [
@@ -108,17 +115,17 @@ export const portfolioEn = {
       ],
     },
     {
-      title: "Portfolio Frontend",
-      href: SOURCE_URL,
-      dates: "Active",
+      title: "Backend Reliability Patterns",
+      href: GITHUB_URL,
+      dates: "Documenting",
       description:
-        "A bilingual project hub for presenting operating services, architecture work, and CV depth without turning the landing page into a dense resume.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "next-intl"],
-      image: "/assets/img/youngwon.png",
+        "A working set of backend design standards I reuse: data validation, transaction boundaries, idempotent request handling, and retry/duplicate-event safeguards.",
+      technologies: ["Kotlin", "Spring Boot", "PostgreSQL", "Redis", "Kafka"],
+      image: "/assets/img/server.png",
       links: [
         {
-          type: "Source",
-          href: SOURCE_URL,
+          type: "GitHub",
+          href: GITHUB_URL,
           icon: <Icons.github className="size-3" />,
         },
       ],
@@ -158,16 +165,16 @@ export const portfolioEn = {
       start: "2022.01",
       end: "2025.01",
       description:
-        "Built and operated computational biology web platforms for AI/Data Science teams, improving search and integrated-query performance with Elasticsearch, Redis, CI/CD, and monitoring.",
+        "Built and operated computational biology platforms for AI/Data Science teams, improving search and integrated-query performance with Elasticsearch, Redis, CI/CD, and monitoring.",
     },
     {
       company: "SolidIT",
       location: "Seoul",
-      title: "Web Developer / Graphics Developer",
+      title: "Graphics / Platform Developer",
       start: "2020.12",
       end: "2021.12",
       description:
-        "Worked across web and OpenGL-based 3D interfaces, restoring rendering performance and connecting graphics-heavy tools with usable platform flows.",
+        "Worked on OpenGL-based 3D tooling, restoring rendering performance and connecting graphics-heavy features with usable platform flows.",
     },
   ],
   education: [
@@ -221,7 +228,7 @@ export const portfolioEn = {
       period: "SolidIT",
       description:
         "Improved rendering performance from near-unusable frame rates to a stable interactive range for 3D platform workflows.",
-      tags: ["OpenGL", "Performance", "Web Platform"],
+      tags: ["OpenGL", "Performance", "3D Platform"],
     },
   ],
 } satisfies PortfolioData;

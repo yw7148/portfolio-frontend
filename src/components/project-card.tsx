@@ -12,14 +12,14 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
   const [imageError, setImageError] = useState(false);
 
   if (!src || imageError) {
-    return <div className="w-full h-48 bg-muted" />;
+    return <div className="h-44 w-full bg-muted" />;
   }
 
   return (
     <img
       src={src}
       alt={alt}
-      className="w-full h-48 object-cover"
+      className="h-44 w-full object-cover"
       onError={() => setImageError(true)}
     />
   );
@@ -57,7 +57,7 @@ export function ProjectCard({
   return (
     <div
       className={cn(
-        "flex flex-col h-full border border-border rounded-xl overflow-hidden hover:ring-2 cursor-pointer hover:ring-muted transition-all duration-200",
+        "flex h-full cursor-pointer flex-col overflow-hidden rounded-md border border-border transition-all duration-200 hover:border-foreground/20",
         className
       )}
     >
@@ -75,12 +75,12 @@ export function ProjectCard({
               loop
               muted
               playsInline
-              className="w-full h-48 object-cover"
+              className="h-44 w-full object-cover"
             />
           ) : image ? (
             <ProjectImage src={image} alt={title} />
           ) : (
-            <div className="w-full h-48 bg-muted" />
+            <div className="h-44 w-full bg-muted" />
           )}
         </Link>
         {links && links.length > 0 && (
@@ -94,7 +94,7 @@ export function ProjectCard({
                 onClick={(e) => e.stopPropagation()}
               >
                 <Badge
-                  className="flex items-center gap-1.5 text-xs bg-black text-white hover:bg-black/90"
+                  className="flex items-center gap-1.5 rounded-md bg-black text-xs text-white hover:bg-black/90"
                   variant="default"
                 >
                   {link.icon}
@@ -105,7 +105,7 @@ export function ProjectCard({
           </div>
         )}
       </div>
-      <div className="p-6 flex flex-col gap-3 flex-1">
+      <div className="flex flex-1 flex-col gap-3 p-5">
         <div className="flex items-start justify-between gap-2">
           <div className="flex flex-col gap-1">
             <h3 className="font-semibold">{title}</h3>
@@ -129,7 +129,7 @@ export function ProjectCard({
             {tags.map((tag) => (
               <Badge
                 key={tag}
-                className="text-[11px] font-medium border border-border h-6 w-fit px-2"
+                className="h-6 w-fit rounded-md border border-border px-2 text-[11px] font-medium"
                 variant="outline"
               >
                 {tag}

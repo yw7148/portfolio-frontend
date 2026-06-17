@@ -1,6 +1,11 @@
 import { Icons } from "@/components/icons";
 import type { PortfolioData } from "./schema";
-import { FileTextIcon, HomeIcon } from "lucide-react";
+import {
+  BriefcaseBusinessIcon,
+  FileTextIcon,
+  HomeIcon,
+  MailIcon,
+} from "lucide-react";
 
 const SOURCE_URL = "https://github.com/yw7148/portfolio-frontend";
 const GITHUB_URL = "https://github.com/yw7148";
@@ -39,6 +44,8 @@ export const portfolioEn = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/cv", icon: FileTextIcon, label: "CV" },
+    { href: "/#projects", icon: BriefcaseBusinessIcon, label: "Projects" },
+    { href: "/#contact", icon: MailIcon, label: "Contact" },
   ],
   contact: {
     email: "youngwon@youngwon.me",

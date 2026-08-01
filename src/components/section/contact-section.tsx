@@ -6,13 +6,11 @@ export default function ContactSection({
   title,
   description,
   email,
-  cvHref,
 }: {
   label: string;
   title: string;
   description: string;
   email: string;
-  cvHref: string;
 }) {
   return (
     <div className="border rounded-xl p-10 relative">
@@ -37,18 +35,12 @@ export default function ContactSection({
         <p className="mx-auto max-w-lg text-muted-foreground text-balance">
           {description}
         </p>
-        <div className="flex flex-wrap justify-center gap-3 text-sm">
+        <div className="text-sm">
           <Link
             href={`mailto:${email}`}
             className="rounded-full border bg-background px-4 py-2 font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             Email
-          </Link>
-          <Link
-            href={cvHref}
-            className="rounded-full border bg-primary px-4 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
-            CV
           </Link>
         </div>
       </div>

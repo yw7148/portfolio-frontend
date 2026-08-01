@@ -29,8 +29,6 @@ Paid templates or paid component packs are not used in this implementation.
 
 - `/en`
 - `/ko`
-- `/en/cv`
-- `/ko/cv`
 
 The root route redirects to `/en`.
 
@@ -40,7 +38,6 @@ The root route redirects to `/en`.
   AI/RAG service pipelines.
 - Do not add GraphQL, Apollo, or e-commerce API placeholder skills/content.
 - Home is a concise operating-services hub.
-- CV contains detailed career history and architecture impact.
 
 ## Local Development
 
@@ -64,7 +61,7 @@ The app is expected to deploy as a Next.js project on Vercel.
 - Framework preset: `Next.js`
 - Build command: `npm run build`
 - Output directory: Vercel default for Next.js
-- Public routes: `/en`, `/ko`, `/en/cv`, `/ko/cv`
+- Public routes: `/en`, `/ko`
 
 If a deployment is `READY` but the public URL returns Vercel
 `x-vercel-error: NOT_FOUND`, first check Vercel project settings rather than

@@ -2,6 +2,7 @@ import { Icons } from "@/components/icons";
 import type { PortfolioData } from "./schema";
 import {
   BriefcaseBusinessIcon,
+  FileTextIcon,
   HomeIcon,
   MailIcon,
 } from "lucide-react";
@@ -34,11 +35,15 @@ export const portfolioEn = {
     contact: "Contact",
     contactTitle: "Build with systems that hold up",
     contactDescription:
-      "Get in touch to discuss backend system design, operations, or collaboration.",
+      "For deeper career details, the CV page expands the architecture, performance, and infrastructure stories.",
+    cvTitle: "CV",
+    cvSubtitle:
+      "Career history with emphasis on data fitness, idempotent processing, and operational reliability.",
     localeToggle: "Korean",
   },
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
+    { href: "/cv", icon: FileTextIcon, label: "CV" },
     { href: "/#projects", icon: BriefcaseBusinessIcon, label: "Projects" },
     { href: "/#contact", icon: MailIcon, label: "Contact" },
   ],

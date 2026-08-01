@@ -5,6 +5,7 @@ import ContactSection from "@/components/section/contact-section";
 import ProjectsSection from "@/components/section/projects-section";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { getPortfolio } from "@/content";
+import { Link } from "@/i18n/navigation";
 import {
   ArrowRight,
   Code2,
@@ -33,7 +34,8 @@ export default async function HomePage({
       ? {
           eyebrow: "Backend Engineer",
           title: "데이터가 어긋나지 않는 백엔드를 설계합니다",
-          projectsCta: "프로젝트 보기",
+          primaryCta: "CV 보기",
+          secondaryCta: "프로젝트 보기",
           contactCta: "연락하기",
           strengthsTitle: "핵심 역량",
           strengthTitles: ["데이터 적합성", "멱등한 흐름", "엣지 케이스"],
@@ -66,7 +68,8 @@ export default async function HomePage({
       : {
           eyebrow: "Backend Engineer",
           title: "Designing backends where data stays aligned",
-          projectsCta: "View Projects",
+          primaryCta: "View CV",
+          secondaryCta: "View Projects",
           contactCta: "Contact",
           strengthsTitle: "Core Strengths",
           strengthTitles: [
@@ -134,12 +137,18 @@ export default async function HomePage({
 
             <BlurFade delay={BLUR_FADE_DELAY * 4}>
               <div className="flex flex-wrap gap-3 text-sm">
-                <a
-                  href="#projects"
+                <Link
+                  href="/cv"
                   className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2.5 font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 >
-                  {copy.projectsCta}
+                  {copy.primaryCta}
                   <ArrowRight className="size-4" aria-hidden />
+                </Link>
+                <a
+                  href="#projects"
+                  className="inline-flex items-center gap-2 rounded-md border bg-background px-4 py-2.5 font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  {copy.secondaryCta}
                 </a>
                 <a
                   href={`mailto:${data.contact.email}`}
@@ -338,6 +347,7 @@ export default async function HomePage({
             title={data.labels.contactTitle}
             description={data.labels.contactDescription}
             email={data.contact.email}
+            cvHref={`/${locale}/cv`}
           />
         </BlurFade>
       </section>

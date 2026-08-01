@@ -88,8 +88,6 @@ export type PortfolioData = {
     contact: string;
     contactTitle: string;
     contactDescription: string;
-    cvTitle: string;
-    cvSubtitle: string;
     localeToggle: string;
   };
   navbar: NavItem[];

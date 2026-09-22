@@ -1,135 +1,105 @@
 "use client";
 
-import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "@/components/mode-toggle";
-import { Separator } from "@/components/ui/separator";
-import {
-  Tooltip,
-  TooltipArrow,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { portfolioEn } from "@/content/portfolio.en";
-import { portfolioKo } from "@/content/portfolio.ko";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
-import { LanguagesIcon } from "lucide-react";
+import {
+  BookOpenIcon,
+  FileTextIcon,
+  GithubIcon,
+  HomeIcon,
+  LanguagesIcon,
+} from "lucide-react";
 import { useLocale } from "next-intl";
+
+const BLOG_URL = "https://blog.youngwon.me";
+const GITHUB_URL = "https://github.com/yw7148";
 
 export default function Navbar() {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
-  const data = locale === "ko" ? portfolioKo : portfolioEn;
   const nextLocale = locale === "ko" ? "en" : "ko";
+  const labels =
+    locale === "ko"
+      ? {
+          navigation: "사이트 메뉴",
+          portfolio: "포트폴리오",
+          cv: "경력기술서",
+          blog: "블로그",
+          github: "GitHub (새 창)",
+          locale: "English",
+          theme: "테마 전환",
+        }
+      : {
+          navigation: "Site navigation",
+          portfolio: "Portfolio",
+          cv: "CV",
+          blog: "Blog",
+          github: "GitHub (new tab)",
+          locale: "Korean",
+          theme: "Toggle theme",
+        };
 
   return (
-    <div className="pointer-events-none fixed inset-x-0 bottom-4 z-30 sm:top-4 sm:bottom-auto">
-      <Dock className="z-50 pointer-events-auto relative h-12 max-w-[calc(100vw-1rem)] p-1 w-fit mx-auto flex gap-1 border bg-card/90 backdrop-blur-3xl shadow-[0_0_10px_3px] shadow-primary/5 sm:h-14 sm:gap-2 sm:p-2">
-        {data.navbar.map((item) => {
-          return (
-            <Tooltip key={item.href}>
-              <TooltipTrigger asChild>
-                <Link
-                  href={item.href}
-                  aria-label={item.label}
-                  className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-full"
-                >
-                  <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
-                    <item.icon className="size-full rounded-sm overflow-hidden object-contain" />
-                  </DockIcon>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent
-                side="top"
-                sideOffset={8}
-                className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
-              >
-                <p>{item.label}</p>
-                <TooltipArrow className="fill-primary" />
-              </TooltipContent>
-            </Tooltip>
-          );
-        })}
-        <Separator
-          orientation="vertical"
-          className="h-2/3 m-auto w-px bg-border"
+    <header className="site-header">
+      <nav className="site-dock" aria-label={labels.navigation}>
+        <Link
+          className="dock-item"
+          href="/"
+          aria-label={labels.portfolio}
+          aria-current={pathname === "/" ? "page" : undefined}
+          data-tooltip="Portfolio"
+        >
+          <HomeIcon aria-hidden="true" />
+        </Link>
+        <Link
+          className="dock-item"
+          href="/cv"
+          aria-label={labels.cv}
+          aria-current={pathname === "/cv" ? "page" : undefined}
+          data-tooltip="CV"
+        >
+          <FileTextIcon aria-hidden="true" />
+        </Link>
+        <a
+          className="dock-item"
+          href={BLOG_URL}
+          aria-label={labels.blog}
+          data-tooltip="Blog"
+        >
+          <BookOpenIcon aria-hidden="true" />
+        </a>
+
+        <span className="dock-separator" aria-hidden="true" />
+
+        <a
+          className="dock-item"
+          href={GITHUB_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={labels.github}
+          data-tooltip="GitHub"
+        >
+          <GithubIcon aria-hidden="true" />
+        </a>
+
+        <span className="dock-separator" aria-hidden="true" />
+
+        <button
+          type="button"
+          className="dock-item"
+          aria-label={labels.locale}
+          data-tooltip={labels.locale}
+          onClick={() => router.replace(pathname, { locale: nextLocale })}
+        >
+          <LanguagesIcon aria-hidden="true" />
+        </button>
+        <ModeToggle
+          className="dock-item"
+          aria-label={labels.theme}
+          data-tooltip="Theme"
         />
-        {Object.entries(data.contact.social)
-          .filter(([_, social]) => social.navbar)
-          .map(([name, social], index) => {
-            const isExternal = social.url.startsWith("http");
-            const IconComponent = social.icon;
-            return (
-              <Tooltip key={`social-${name}-${index}`}>
-                <TooltipTrigger asChild>
-                  <a
-                    href={social.url}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noopener noreferrer" : undefined}
-                    className={name === "GitHub" ? undefined : "hidden sm:block"}
-                  >
-                    <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
-                      <IconComponent className="size-full rounded-sm overflow-hidden object-contain" />
-                    </DockIcon>
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent
-                  side="top"
-                  sideOffset={8}
-                  className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
-                >
-                  <p>{name}</p>
-                  <TooltipArrow className="fill-primary" />
-                </TooltipContent>
-              </Tooltip>
-            );
-          })}
-        <Separator
-          orientation="vertical"
-          className="h-2/3 m-auto w-px bg-border"
-        />
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <button
-              type="button"
-              aria-label={data.labels.localeToggle}
-              onClick={() => router.replace(pathname, { locale: nextLocale })}
-              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-full"
-            >
-              <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
-                <LanguagesIcon className="size-full rounded-sm overflow-hidden object-contain" />
-              </DockIcon>
-            </button>
-          </TooltipTrigger>
-          <TooltipContent
-            side="top"
-            sideOffset={8}
-            className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
-          >
-            <p>{data.labels.localeToggle}</p>
-            <TooltipArrow className="fill-primary" />
-          </TooltipContent>
-        </Tooltip>
-        <Separator
-          orientation="vertical"
-          className="h-2/3 m-auto w-px bg-border"
-        />
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <DockIcon className="rounded-3xl cursor-pointer size-full bg-background p-0 text-muted-foreground hover:text-foreground hover:bg-muted backdrop-blur-3xl border border-border transition-colors">
-              <ModeToggle className="size-full cursor-pointer" />
-            </DockIcon>
-          </TooltipTrigger>
-          <TooltipContent
-            side="top"
-            sideOffset={8}
-            className="rounded-xl bg-primary text-primary-foreground px-4 py-2 text-sm shadow-[0_10px_40px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]"
-          >
-            <p>Theme</p>
-            <TooltipArrow className="fill-primary" />
-          </TooltipContent>
-        </Tooltip>
-      </Dock>
-    </div>
+      </nav>
+    </header>
   );
 }

@@ -29,8 +29,6 @@ Paid templates or paid component packs are not used in this implementation.
 
 - `/en`
 - `/ko`
-- `/en/cv`
-- `/ko/cv`
 
 The root route redirects to `/en`.
 
@@ -39,8 +37,14 @@ The root route redirects to `/en`.
 - Focus: Kotlin, Spring, backend architecture, infrastructure, performance, and
   AI/RAG service pipelines.
 - Do not add GraphQL, Apollo, or e-commerce API placeholder skills/content.
-- Home is a concise operating-services hub.
-- CV contains detailed career history and architecture impact.
+- Home leads with selected project cases (role, problem, decision, result), followed
+  by technical writing and public operating projects.
+- Content is maintained statically in `src/content/portfolio.ko.tsx` and
+  `src/content/portfolio.en.tsx`; no backend or environment variables are needed.
+- Add a verified public article URL to a case's optional `article: { label, href }`
+  field in both locales when the detailed post is published. Omit the field
+  while unpublished; do not substitute private repositories or placeholder URLs.
+- Technical posts live in `writing`, separate from the broader `caseStudies`.
 
 ## Local Development
 
@@ -64,7 +68,7 @@ The app is expected to deploy as a Next.js project on Vercel.
 - Framework preset: `Next.js`
 - Build command: `npm run build`
 - Output directory: Vercel default for Next.js
-- Public routes: `/en`, `/ko`, `/en/cv`, `/ko/cv`
+- Public routes: `/en`, `/ko`
 
 If a deployment is `READY` but the public URL returns Vercel
 `x-vercel-error: NOT_FOUND`, first check Vercel project settings rather than

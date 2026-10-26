@@ -1,4 +1,4 @@
-import type { ComponentType, ReactNode } from "react";
+import type { ComponentType } from "react";
 
 export type IconComponent = ComponentType<{ className?: string }>;
 
@@ -25,46 +25,27 @@ export type SkillItem = {
   icon?: string;
 };
 
-export type ServiceItem = {
+export type ProjectItem = {
   title: string;
-  href: string;
-  dates: string;
   description: string;
   technologies: string[];
-  image?: string;
-  video?: string;
-  links: {
-    type: string;
-    href: string;
-    icon: ReactNode;
-  }[];
+  links: LinkItem[];
 };
 
-export type WorkItem = {
-  company: string;
-  href?: string;
-  location: string;
+export type CaseStudyItem = {
+  id: string;
   title: string;
-  logoUrl?: string;
-  start: string;
-  end?: string;
-  description: string;
+  context: string;
+  role: string;
+  problem: string;
+  decision: string;
+  outcome: string;
+  technologies: string[];
+  article?: LinkItem;
 };
 
-export type EducationItem = {
-  school: string;
-  href: string;
-  degree: string;
-  logoUrl?: string;
-  start: string;
-  end: string;
-};
-
-export type ImpactItem = {
-  title: string;
-  period: string;
+export type WritingItem = LinkItem & {
   description: string;
-  tags: string[];
 };
 
 export type PortfolioData = {
@@ -78,18 +59,22 @@ export type PortfolioData = {
   avatarUrl: string;
   labels: {
     about: string;
-    services: string;
-    servicesTitle: string;
-    servicesDescription: string;
+    cases: string;
+    casesTitle: string;
+    casesDescription: string;
+    role: string;
+    problem: string;
+    decision: string;
+    outcome: string;
+    writing: string;
+    writingDescription: string;
+    blog: string;
+    projects: string;
+    projectsDescription: string;
     skills: string;
-    work: string;
-    education: string;
-    impact: string;
     contact: string;
     contactTitle: string;
     contactDescription: string;
-    cvTitle: string;
-    cvSubtitle: string;
     localeToggle: string;
   };
   navbar: NavItem[];
@@ -97,10 +82,8 @@ export type PortfolioData = {
     email: string;
     social: Record<string, SocialItem>;
   };
-  strengths: string[];
   skills: SkillItem[];
-  services: ServiceItem[];
-  work: WorkItem[];
-  education: EducationItem[];
-  impacts: ImpactItem[];
+  caseStudies: CaseStudyItem[];
+  writing: WritingItem[];
+  projects: ProjectItem[];
 };

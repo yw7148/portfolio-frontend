@@ -66,6 +66,10 @@ export default async function LocaleLayout({
               locale === "ko" && "break-keep"
             )}
           >
+            <a className="skip-link" href="#main-content">
+              {locale === "ko" ? "본문으로 이동" : "Skip to content"}
+            </a>
+            <Navbar />
             <div className="absolute inset-0 top-0 left-0 right-0 h-[120px] overflow-hidden z-0">
               <FlickeringGrid
                 className="h-full w-full"
@@ -77,10 +81,13 @@ export default async function LocaleLayout({
                 }}
               />
             </div>
-            <div className="relative z-10 max-w-5xl mx-auto py-12 pb-28 sm:py-20 px-6">
+            <div
+              id="main-content"
+              tabIndex={-1}
+              className="relative z-10 max-w-5xl mx-auto py-12 pb-28 sm:py-20 px-6"
+            >
               {children}
             </div>
-            <Navbar />
           </div>
         </TooltipProvider>
       </ThemeProvider>

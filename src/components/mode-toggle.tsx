@@ -1,23 +1,24 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { cn } from "@/lib/utils";
+import type { ButtonHTMLAttributes } from "react";
 
-export function ModeToggle({ className }: { className?: string }) {
-  const { theme, setTheme } = useTheme();
+type ModeToggleProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick">;
+
+export function ModeToggle({ className, ...props }: ModeToggleProps) {
+  const { resolvedTheme, setTheme } = useTheme();
 
   return (
-    <Button
+    <button
       type="button"
-      variant="link"
-      size="icon"
       className={cn(className)}
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+      {...props}
     >
-      <SunIcon className="h-full w-full" />
-      <MoonIcon className="hidden h-full w-full" />
-    </Button>
+      <SunIcon className="theme-icon-sun" aria-hidden="true" />
+      <MoonIcon className="theme-icon-moon" aria-hidden="true" />
+    </button>
   );
 }

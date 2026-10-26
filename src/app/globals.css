@@ -77,6 +77,14 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --dock-surface: #ffffff;
+  --dock-surface-muted: #eef4f1;
+  --dock-text: #16211c;
+  --dock-muted: #5c6962;
+  --dock-border: #d7e2dc;
+  --dock-accent: #0f766e;
+  --dock-accent-strong: #0b5f59;
+  --dock-accent-soft: #dff3ef;
 }
 
 .dark {
@@ -111,6 +119,14 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --dock-surface: #171d1a;
+  --dock-surface-muted: #202824;
+  --dock-text: #e9f0ec;
+  --dock-muted: #a9b6af;
+  --dock-border: #303a35;
+  --dock-accent: #5eead4;
+  --dock-accent-strong: #99f6e4;
+  --dock-accent-soft: #123732;
 }
 
 @layer base {
@@ -237,4 +253,187 @@
     @apply border-b-0;
   }
 
+}
+
+.skip-link {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  z-index: 100;
+  transform: translateY(-140%);
+  border-radius: 8px;
+  background: var(--dock-text);
+  color: var(--background);
+  padding: 8px 12px;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-header {
+  position: fixed;
+  inset: 16px 0 auto;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.site-dock {
+  display: flex;
+  width: fit-content;
+  height: 56px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--dock-border);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--dock-surface) 90%, transparent);
+  box-shadow: 0 4px 22px rgb(22 33 28 / 9%);
+  padding: 8px;
+  pointer-events: auto;
+  backdrop-filter: blur(20px);
+}
+
+.dock-item {
+  position: relative;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  place-items: center;
+  border: 1px solid var(--dock-border);
+  border-radius: 50%;
+  background: var(--dock-surface);
+  color: var(--dock-muted);
+  padding: 9px;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.dock-item:hover {
+  border-color: color-mix(in srgb, var(--dock-accent) 45%, var(--dock-border));
+  background: var(--dock-surface-muted);
+  color: var(--dock-text);
+  transform: translateY(-2px);
+}
+
+.dock-item[aria-current="page"] {
+  border-color: color-mix(in srgb, var(--dock-accent) 50%, var(--dock-border));
+  background: var(--dock-accent-soft);
+  color: var(--dock-accent-strong);
+}
+
+.dock-item:focus-visible,
+.skip-link:focus-visible {
+  outline: 3px solid var(--dock-accent);
+  outline-offset: 3px;
+}
+
+.dock-item svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dock-item::after {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translate(-50%, -2px);
+  border-radius: 7px;
+  background: var(--dock-text);
+  color: var(--background);
+  content: attr(data-tooltip);
+  padding: 4px 7px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+  white-space: nowrap;
+}
+
+.dock-item:is(:hover, :focus-visible)::after {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+.dock-separator {
+  width: 1px;
+  height: 24px;
+  flex: none;
+  background: var(--dock-border);
+}
+
+.theme-icon-moon {
+  display: none;
+}
+
+.dark .theme-icon-sun {
+  display: none;
+}
+
+.dark .theme-icon-moon {
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .site-header {
+    inset: auto 0 12px;
+  }
+
+  .site-dock {
+    max-width: calc(100vw - 16px);
+    height: 52px;
+    gap: 4px;
+    padding: 6px;
+  }
+
+  .dock-item {
+    width: 38px;
+    height: 38px;
+    padding: 9px;
+  }
+
+  .dock-item::after {
+    top: auto;
+    bottom: calc(100% + 10px);
+  }
+
+  .dock-separator {
+    height: 22px;
+    margin-inline: 1px;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-dock {
+    height: 44px;
+    gap: 2px;
+    padding: 4px;
+  }
+
+  .dock-item {
+    width: 36px;
+    height: 36px;
+    padding: 8px;
+  }
+
+  .dock-separator {
+    margin-inline: 0;
+  }
 }

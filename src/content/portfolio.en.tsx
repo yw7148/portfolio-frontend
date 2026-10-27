@@ -91,18 +91,22 @@ export const portfolioEn = {
   caseStudies: [
     {
       id: "payment-migration",
-      title: "Following a payment migration through the next renewal",
-      context: "Socra AI · Payment migration",
+      title: "Following a payment migration through renewals, cancellations, and refunds",
+      context: "Socra AI · Santa · Payment migration",
       role: "Owned source-data analysis, identifier mapping, migration execution and tracking, and payment integration changes in the service.",
       problem: "With limited documentation and no original owner available, historical records had to move while future subscription events still resolved to existing orders.",
       decision: "Separated subscription identity from individual payment identity and recorded processing stages. Temporarily restricted new payments while protecting existing users’ access during cutover.",
       outcome: "Reconciled financial totals across both servers and followed subsequent renewal events. Resolved 19 subscriptions with uncertain identifiers using evidence from their next renewals.",
       technologies: ["Kotlin", "Spring Boot", "Python", "Data Migration"],
+      article: {
+        label: "Read the payment migration article (Korean)",
+        href: "https://blog.youngwon.me/posts/payment-migration/",
+      },
     },
     {
       id: "recommendation-v2",
       title: "Preserving learning history as the recommendation model changes",
-      context: "Santa TOEFL · Recommendation v2 transition",
+      context: "Socra AI · Santa · TOEFL Recommendation v2 transition",
       role: "Implemented recommendation integration, snapshot models, and consumer changes across TOEFL and LearningHub.",
       problem: "Recommendations moved from skills to scores and weaknesses. Existing recommendations still needed to be readable while both versions coexisted.",
       decision: "Kept learning-sequence ownership in TOEFL and left information absent from historical recommendations unknown. Both versions shared the same storage slot and lock key.",

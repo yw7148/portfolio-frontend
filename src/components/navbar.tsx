@@ -4,7 +4,6 @@ import { ModeToggle } from "@/components/mode-toggle";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import {
   BookOpenIcon,
-  FileTextIcon,
   GithubIcon,
   HomeIcon,
   LanguagesIcon,
@@ -24,7 +23,6 @@ export default function Navbar() {
       ? {
           navigation: "사이트 메뉴",
           portfolio: "포트폴리오",
-          cv: "경력기술서",
           blog: "블로그",
           github: "GitHub (새 창)",
           locale: "English",
@@ -33,7 +31,6 @@ export default function Navbar() {
       : {
           navigation: "Site navigation",
           portfolio: "Portfolio",
-          cv: "CV",
           blog: "Blog",
           github: "GitHub (new tab)",
           locale: "Korean",
@@ -51,15 +48,6 @@ export default function Navbar() {
           data-tooltip="Portfolio"
         >
           <HomeIcon aria-hidden="true" />
-        </Link>
-        <Link
-          className="dock-item"
-          href="/cv"
-          aria-label={labels.cv}
-          aria-current={pathname === "/cv" ? "page" : undefined}
-          data-tooltip="CV"
-        >
-          <FileTextIcon aria-hidden="true" />
         </Link>
         <a
           className="dock-item"

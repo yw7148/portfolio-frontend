@@ -30,7 +30,7 @@ Paid templates or paid component packs are not used in this implementation.
 - `/en`
 - `/ko`
 
-The root route redirects to `/en`.
+The root route redirects to `/ko` by default. English is available at `/en`.
 
 ## Content Rules
 

@@ -9,10 +9,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const data = getPortfolio(locale);
   const copy = locale === "ko" ? {
-    title: "문제를 깊이 이해하고, 선택의 결과까지 생각합니다",
+    title: "해결할 문제를 정의하고, 그에 맞는 설계 기준을 세웁니다.",
     contact: "연락하기", cases: "대표 사례 보기", skills: "주로 사용하는 기술",
   } : {
-    title: "Understanding the problem. Thinking through the consequences.",
+    title: "I define the problem and set the design criteria to solve it.",
     contact: "Get in touch", cases: "Explore project cases", skills: "Core technologies",
   };
 

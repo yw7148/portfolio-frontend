@@ -18,9 +18,9 @@ export const portfolioKo = {
   location: "대한민국 서울",
   locationLink: "https://www.google.com/maps/place/Seoul",
   description:
-    "문제를 깊이 이해하고, 선택의 결과까지 생각하는 Kotlin/Spring 백엔드 엔지니어입니다.",
+    "해결할 문제를 정의하고, 그에 맞는 설계 기준을 세우는 Kotlin/Spring 백엔드 엔지니어입니다.",
   summary:
-    "결제와 학습 서비스의 백엔드를 개발합니다. 무엇을 보장해야 하는지 먼저 정하고, 데이터 이전과 추천 모델 변경에서도 기존 데이터와 사용자 경험의 일관성을 지키는 방법을 고민합니다.",
+    "요구사항의 목적을 파악해 시스템이 지켜야 할 조건과 완료의 기준을 정합니다. 구현 이후의 데이터와 후속 처리까지 추적해, 의도한 결과에 도달했는지 확인합니다.",
   avatarUrl: "/assets/img/youngwon.png",
   labels: {
     about: "소개",

@@ -18,9 +18,9 @@ export const portfolioEn = {
   location: "Seoul, South Korea",
   locationLink: "https://www.google.com/maps/place/Seoul",
   description:
-    "Kotlin/Spring backend engineer who investigates problems deeply and considers the consequences of each design choice.",
+    "Kotlin/Spring backend engineer who defines problems and establishes design criteria to solve them.",
   summary:
-    "I build backends for payment and learning services. I start by defining what must hold, then work through data migrations and recommendation-model changes while preserving existing data and a consistent user experience.",
+    "I clarify the goals behind requirements to define the conditions the system must uphold and the criteria for completion. I trace data and downstream processing beyond implementation to verify that the intended outcome is achieved.",
   avatarUrl: "/assets/img/youngwon.png",
   labels: {
     about: "About",

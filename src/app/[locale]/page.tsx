@@ -30,7 +30,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <a href={`mailto:${data.contact.email}`} className="rounded-md border px-4 py-3 font-medium hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">{copy.contact}</a>
           </div>
         </div>
-        <img src={data.avatarUrl} alt={data.name} width={96} height={96} className="hidden size-24 rounded-full border object-cover sm:block" />
+        <img
+          src={data.avatarUrl}
+          alt=""
+          width={180}
+          height={180}
+          className="hidden object-contain sm:block sm:size-32 md:size-[180px]"
+        />
       </section>
 
       <CaseStudiesSection caseStudies={data.caseStudies} labels={data.labels} />
